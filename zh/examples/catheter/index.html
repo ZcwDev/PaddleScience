@@ -1,0 +1,5042 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="An out-of-the-box open source library for scientific computing based on deep learning.">
+      
+      
+        <meta name="author" content="PaddlePaddle">
+      
+      
+        <link rel="canonical" href="https://github.com/PaddlePaddle/PaddleScience/zh/examples/catheter/">
+      
+      
+        <link rel="prev" href="../transformer4sr/">
+      
+      
+        <link rel="next" href="../amgnet/">
+      
+      
+      <link rel="icon" href="../../../images/icons/favcion.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.9">
+    
+    
+      
+        <title>Catheter - PaddleScience Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.4af4bdda.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+  
+  
+  
+  
+  <style>:root{--md-annotation-icon:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20512%20512%22%3E%3C%21--%21%20Font%20Awesome%20Free%206.7.2%20by%20%40fontawesome%20-%20https%3A//fontawesome.com%20License%20-%20https%3A//fontawesome.com/license/free%20%28Icons%3A%20CC%20BY%204.0%2C%20Fonts%3A%20SIL%20OFL%201.1%2C%20Code%3A%20MIT%20License%29%20Copyright%202024%20Fonticons%2C%20Inc.--%3E%3Cpath%20d%3D%22M256%20512a256%20256%200%201%200%200-512%20256%20256%200%201%200%200%20512m-86.2-346.7c7.9-22.3%2029.1-37.3%2052.8-37.3h58.3c34.9%200%2063.1%2028.3%2063.1%2063.1%200%2022.6-12.1%2043.5-31.7%2054.8L280%20264.4c-.2%2013-10.9%2023.6-24%2023.6-13.3%200-24-10.7-24-24v-13.5c0-8.6%204.6-16.5%2012.1-20.8l44.3-25.4c4.7-2.7%207.6-7.7%207.6-13.1%200-8.4-6.8-15.1-15.1-15.1h-58.3c-3.4%200-6.4%202.1-7.5%205.3l-.4%201.2c-4.4%2012.5-18.2%2019-30.6%2014.6s-19-18.2-14.6-30.6l.4-1.2zM224%20352a32%2032%200%201%201%2064%200%2032%2032%200%201%201-64%200%22/%3E%3C/svg%3E');}</style>
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Serif SC";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ai-aided-geometric-design-of-anti-infection-catheters" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="PaddleScience Docs" class="md-header__button md-logo" aria-label="PaddleScience Docs" data-md-component="logo">
+      
+  <img src="../../../images/icons/paddle.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            PaddleScience Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Catheter
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="选择当前语言">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="/zh/" hreflang="zh" class="md-select__link">
+              简体中文
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="/en/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/PaddlePaddle/PaddleScience" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    PaddleScience
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../.." class="md-tabs__link">
+          
+  
+  PaddleScience
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../allen_cahn/" class="md-tabs__link">
+          
+  
+  经典案例
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../api/arch/" class="md-tabs__link">
+          
+  
+  API 文档
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../user_guide/" class="md-tabs__link">
+        
+  
+    
+  
+  使用指南
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../development/" class="md-tabs__link">
+          
+  
+  开发与复现指南
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../academic/" class="md-tabs__link">
+        
+  
+    
+  
+  学术成果
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../technical_doc/" class="md-tabs__link">
+        
+  
+    
+  
+  技术稿件
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../cooperation/" class="md-tabs__link">
+        
+  
+    
+  
+  共创计划
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="https://aistudio.baidu.com/aistudio/projectoverview/public?topic=15" class="md-tabs__link">
+        
+  
+    
+  
+  实训社区
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="PaddleScience Docs" class="md-nav__button md-logo" aria-label="PaddleScience Docs" data-md-component="logo">
+      
+  <img src="../../../images/icons/paddle.png" alt="logo">
+
+    </a>
+    PaddleScience Docs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/PaddlePaddle/PaddleScience" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    PaddleScience
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    PaddleScience
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            PaddleScience
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    主页
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    功能介绍
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../install_setup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    安装使用
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quickstart/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    快速开始
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    学习资料
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    经典案例
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            经典案例
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+     
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+             
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_1" id="__nav_2_1_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    数学(AI for Math)
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            数学(AI for Math)
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../allen_cahn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AllenCahn
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deephpms/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DeepHPMs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deeponet/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DeepONet
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../euler_beam/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Euler_Beam
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../laplace2d/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Laplace2D
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lorenz/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lorenz_transform_physx
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pirbn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PIRBN
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rossler/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rossler_transform_physx
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../volterra_ide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Volterra_IDE
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nlsmb/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NLSMB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spinn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SPINN
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../xpinns/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    XPINN
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../neuraloperator/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NeuralOperator
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../brusselator3d/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Brusselator3D
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../transformer4sr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Transformer4SR
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_2" id="__nav_2_1_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    技术科学(AI for Technology)
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            技术科学(AI for Technology)
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_2_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_2_1" id="__nav_2_1_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    流体
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_1_2_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_1_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            流体
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Catheter
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Catheter
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 背景简介
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 背景简介">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1 论文信息
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2 作者介绍
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3 模型&amp;复现代码
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 问题定义
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 问题定义">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 探究微观机制
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 AI辅助优化的几何设计
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3 微流控实验
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.4 宏观尺度导管实验
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.5 流体和粒子动力学模拟
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26-geo-fnomachine-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.6 Geo-Fno模型和Machine Learning配置
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#27" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.7 基于梯度的快速逆向设计优化
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#28" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.8 细菌菌株、培养条件、材料和化学品
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#29" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.9 微流控实验
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#210-3d" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.10 3D导管长期实验
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#211" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.11 讨论
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 问题求解
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 问题求解">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 数据集介绍
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-geofno" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 GeoFNO 模型
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3 模型训练、评估
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 结果展示
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. 参考
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../amgnet/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AMGNet
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aneurysm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Aneurysm
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bubble/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    BubbleNet
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cfdgcn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CFDGCN
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adv_cvit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CVit(Advection)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ns_cvit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CVit(NS)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cylinder2d_unsteady/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cylinder2D_unsteady
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cylinder2d_unsteady_transformer_physx/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cylinder2D_unsteady_transform_physx
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../darcy2d/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Darcy2D
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deepcfd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DeepCFD
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ldc2d_steady/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LDC2D_steady
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ldc2d_unsteady/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LDC2D_unsteady
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../labelfree_DNN_surrogate/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Labelfree_DNN_surrogate
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nsfnet/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NSFNets
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phycrnet/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PhyCRNet
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../shock_wave/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ShockWave
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tempoGAN/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    tempoGAN
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nsfnet4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NSFNet4
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../viv/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ViV
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_2_2" id="__nav_2_1_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    结构
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_1_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            结构
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../biharmonic2d/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Biharmonic2D
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bracket/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bracket
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../control_arm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Control_arm
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../epnn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    EPNN
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phylstm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Phy-LSTM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topopt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TopOpt
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../heart/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Heart
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_2_3" id="__nav_2_1_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    传热
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_1_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            传热
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../heat_exchanger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Heat_Exchanger
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../heat_pinn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Heat_PINN
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phygeonet/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PhyGeoNet
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chip_heat/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chip_heat
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_3" id="__nav_2_1_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    材料科学(AI for Material)
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            材料科学(AI for Material)
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hpinns/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    hPINNs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cgcnn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CGCNN
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../perovskite_solar_cells_nn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ANN
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_4" id="__nav_2_1_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    地球科学(AI for Earth Science)
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            地球科学(AI for Earth Science)
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../extformer_moe/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Extformer-MoE
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fourcastnet/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FourCastNet
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nowcastnet/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NowcastNet
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dgmr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DGMR
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../earthformer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    EarthFormer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../graphcast/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GraphCast
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../velocity_gan/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VelocityGAN
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tgcn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TGCN
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_5" id="__nav_2_1_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    化学科学(AI for Chemistry)
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_5">
+            <span class="md-nav__icon md-icon"></span>
+            化学科学(AI for Chemistry)
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../moflow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Moflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    API 文档
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            API 文档
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ppsci
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            ppsci
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/arch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ppsci.arch
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/autodiff/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ppsci.autodiff
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/constraint/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ppsci.constraint
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1_4" id="__nav_3_1_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ppsci.data
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            ppsci.data
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/data/dataset/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ppsci.data.dataset
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/data/process/transform/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ppsci.data.transform
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/data/process/batch_transform/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ppsci.data.batch_transform
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/equation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ppsci.equation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/geometry/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ppsci.geometry
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1_7" id="__nav_3_1_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ppsci.loss
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_7">
+            <span class="md-nav__icon md-icon"></span>
+            ppsci.loss
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/loss/loss/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ppsci.loss.loss
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/loss/mtl/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ppsci.loss.mtl
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/metric/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ppsci.metric
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1_9" id="__nav_3_1_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ppsci.optimizer
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_9">
+            <span class="md-nav__icon md-icon"></span>
+            ppsci.optimizer
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/optimizer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ppsci.optimizer.optimizer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/lr_scheduler/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ppsci.optimizer.lr_scheduler
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/solver/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ppsci.solver
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1_11" id="__nav_3_1_11_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ppsci.utils
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_11">
+            <span class="md-nav__icon md-icon"></span>
+            ppsci.utils
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/utils/checker/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ppsci.utils.checker
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/utils/expression/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ppsci.utils.expression
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/utils/initializer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ppsci.utils.initializer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/utils/logger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ppsci.utils.logger
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/utils/misc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ppsci.utils.misc
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/utils/ema/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ppsci.utils.ema
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/utils/reader/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ppsci.utils.reader
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/utils/writer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ppsci.utils.writer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/utils/save_load/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ppsci.utils.save_load
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/utils/symbolic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ppsci.utils.symbolic
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/validate/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ppsci.validate
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/visualize/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ppsci.visualize
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/experimental/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ppsci.experimental
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/probability/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ppsci.probability
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    deploy
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            deploy
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/depoly/python_infer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    deploy.python_infer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user_guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    使用指南
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    开发与复现指南
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            开发与复现指南
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    开发指南
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reproduction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    复现指南
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../academic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    学术成果
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../technical_doc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    技术稿件
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cooperation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    共创计划
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://aistudio.baidu.com/aistudio/projectoverview/public?topic=15" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    实训社区
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 背景简介
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 背景简介">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1 论文信息
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2 作者介绍
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3 模型&amp;复现代码
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 问题定义
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 问题定义">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 探究微观机制
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 AI辅助优化的几何设计
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3 微流控实验
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.4 宏观尺度导管实验
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.5 流体和粒子动力学模拟
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26-geo-fnomachine-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.6 Geo-Fno模型和Machine Learning配置
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#27" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.7 基于梯度的快速逆向设计优化
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#28" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.8 细菌菌株、培养条件、材料和化学品
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#29" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.9 微流控实验
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#210-3d" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.10 3D导管长期实验
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#211" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.11 讨论
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 问题求解
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 问题求解">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 数据集介绍
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-geofno" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 GeoFNO 模型
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3 模型训练、评估
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 结果展示
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. 参考
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/PaddlePaddle/PaddleScience/edit/develop/docs/zh/examples/catheter.md" title="编辑此页" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/PaddlePaddle/PaddleScience/raw/develop/docs/zh/examples/catheter.md" title="查看本页的源代码" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
+    </a>
+  
+
+
+<div><h1 id="ai-aided-geometric-design-of-anti-infection-catheters">AI-aided geometric design of anti-infection catheters(人工智能辅助的抗感染导管几何设计)<a class="headerlink" href="#ai-aided-geometric-design-of-anti-infection-catheters" title="Permanent link">¶</a></h1>
+<p>Distributed under a creative commons Attribution license 4.0 (CC BY).</p>
+<h2 id="1">1. 背景简介<a class="headerlink" href="#1" title="Permanent link">¶</a></h2>
+<h3 id="11">1.1 论文信息<a class="headerlink" href="#11" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>年份</th>
+<th>期刊</th>
+<th>作者</th>
+<th>引用数</th>
+<th>论文PDF</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3 January 2024</td>
+<td>Science Advance</td>
+<td>Tingtao Zhou, X Wan, DZ Huang, Zongyi Li, Z Peng, A Anandkumar, JF Brady, PW Sternberg, C Daraio</td>
+<td>15</td>
+<td><a href="https://dataset.bj.bcebos.com/PaddleScience/2024%20AI-aided%20geometric%20design%20of%20anti-infection%20catheters/2024%20AI-aided%20geometric%20design%20of%20anti-infection%20catheters.pdf">Paper</a>, <a href="https://dataset.bj.bcebos.com/PaddleScience/2024%20AI-aided%20geometric%20design%20of%20anti-infection%20catheters/sciadv.adj1741_sm.pdf">Supplementary PDF 1</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="12">1.2 作者介绍<a class="headerlink" href="#12" title="Permanent link">¶</a></h3>
+<ul>
+<li>
+<p>第一作者：加州理工学院 Tingtao Zhou <br> 研究方向：统计物理学、流体力学、活性物质、无序材料 <br> <a class="glightbox" href="https://dataset.bj.bcebos.com/PaddleScience/2024%20AI-aided%20geometric%20design%20of%20anti-infection%20catheters/catheter5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="https://dataset.bj.bcebos.com/PaddleScience/2024%20AI-aided%20geometric%20design%20of%20anti-infection%20catheters/catheter5.png"></a></p>
+</li>
+<li>
+<p>通讯作者：加州理工学院 工程与应用科学部 Chiara Daraio (Cited 21038) <br> 教师主页：https://www.eas.caltech.edu/people/daraio <br> 研究方向：力学 材料 非线性动力学 软物质 生物材料 <br> <a class="glightbox" href="https://dataset.bj.bcebos.com/PaddleScience/2024%20AI-aided%20geometric%20design%20of%20anti-infection%20catheters/catheter6.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="https://dataset.bj.bcebos.com/PaddleScience/2024%20AI-aided%20geometric%20design%20of%20anti-infection%20catheters/catheter6.png"></a></p>
+</li>
+<li>
+<p>通讯作者：加州理工学院 生物学和生物工程学部 Paul W. Sternberg (Cited 56555) <br> 教师主页：https://www.bbe.caltech.edu/people/paul-w-sternberg <br> 研究方向：秀丽隐杆线虫发育的系统生物学；性别与睡眠背后的神经回路；线虫功能基因组学与化学生态学；文本挖掘。 <br> <a class="glightbox" href="https://dataset.bj.bcebos.com/PaddleScience/2024%20AI-aided%20geometric%20design%20of%20anti-infection%20catheters/catheter7.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="https://dataset.bj.bcebos.com/PaddleScience/2024%20AI-aided%20geometric%20design%20of%20anti-infection%20catheters/catheter7.png"></a></p>
+</li>
+<li>
+<p>其他作者所属机构 <br> 加州理工学院,工程与应用科学部\化学与化学工程系\生物与生物工程系 <br> 北京大学,北京国际数学研究中心 <br> Meta Platforms公司(前Facebook)，Reality Labs部门</p>
+</li>
+</ul>
+<h3 id="13">1.3 模型&amp;复现代码<a class="headerlink" href="#13" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>问题类型</th>
+<th>在线运行</th>
+<th>神经网络</th>
+<th>预训练模型</th>
+<th>指标</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>算子神经网络预测流场</td>
+<td><a href="https://aistudio.baidu.com/projectdetail/8252779?sUid=1952564&amp;shared=1&amp;ts=172724369783">人工智能辅助的抗感染导管几何设计</a></td>
+<td>傅立叶几何神经算子</td>
+<td><a href="https://dataset.bj.bcebos.com/PaddleScience/2024%20AI-aided%20geometric%20design%20of%20anti-infection%20catheters/result_GeoFNO.pdparams">GeoFNO_pretrained.pdparams</a></td>
+<td>loss(MAE): 0.0664</td>
+</tr>
+</tbody>
+</table>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">模型训练命令</label><label for="__tabbed_1_2">预训练模型快速评估</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># linux</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>wget<span class="w"> </span>https://dataset.bj.bcebos.com/PaddleScience/2024%20AI-aided%20geometric%20design%20of%20anti-infection%20catheters/data.zip
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1"># windows</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># curl https://dataset.bj.bcebos.com/PaddleScience/2024%20AI-aided%20geometric%20design%20of%20anti-infection%20catheters/data.zip -o data.zip</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>unzip<span class="w"> </span>data.zip
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>python<span class="w"> </span>catheter.py
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>python<span class="w"> </span>catheter.py<span class="w"> </span><span class="nv">mode</span><span class="o">=</span><span class="nb">eval</span><span class="w"> </span>EVAL.pretrained_model<span class="o">=</span>https://dataset.bj.bcebos.com/PaddleScience/2024%20AI-aided%20geometric%20design%20of%20anti-infection%20catheters/result_GeoFNO.pdparams
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<p>在狭窄管道内的流体环境中，细菌能借助流体动力学作用逆流迁移，对使用植入性导管的患者构成泌尿道感染的严重威胁。尽管已有提议采用涂层与结构化表面来抑制导管内的细菌滋生，但遗憾的是，至今尚无一种表面结构或涂层技术能从根本上解决污染难题。鉴于此，我们依据逆流游动的物理原理，创新性地提出了一种几何设计方案，并通过AI模型对细菌流入动力学进行预测与优化。相较于传统模拟方法，所采用的傅立叶神经算子人工智能技术实现了显著的速度提升。</p>
+<p>在准二维微流体实验中，我们以大肠杆菌为对象，验证了该设计的抗感染机制，并在临床相关流速下，通过 3D 打印的导管原型对其有效性进行了评估。实验结果显示，我们的导管设计在抑制导管上游端细菌污染方面，实现了 1-2 个数量级的提升，有望大幅延长导管的安全留置时间，并整体降低导管相关性尿路感染的风险。</p>
+<h2 id="2">2. 问题定义<a class="headerlink" href="#2" title="Permanent link">¶</a></h2>
+<p>导管相关尿路感染（CAUTIs）（1-5）是住院患者中最常见的感染之一，每年约造成3000万美元的损失（6）。从材料/设备的角度来看，以往预防此类感染的方法包括用抗菌银nm粒子浸渍导管（7）或使用抗生素锁溶液、抗粘附或抗菌材料（8, 9）。然而，这些方法的效果均未能超越严格的护理程序，当前临床实践中预防CAUTI的重点是减少导管的留置时间来预防感染。设计一种在流体存在下能减少细菌活动性的导管，将对当前CAUTI的管理带来显著改善。</p>
+<p>这样的设计需要我们了解微生物在受限条件下流体流动中的运动模式。典型的微生物轨迹在奔跑（直线推进）和翻滚（随机改变方向）之间交替，以探索环境（10-13）。流体动力学相互作用和群体感应导致更复杂的动态行为，如增强对表面的吸引力（14, 15）和集体群游运动（16-19）。在剪切流中，微观的奔跑-翻滚（RTP）运动可以导致宏观的逆流游动（20-27）。通常，被动粒子除了扩散扩散外，还会被对流至下游（28）。然而，微生物的自驱动导致其宏观传输在性质上有所不同：细菌体在穿越管道时会被流体涡度旋转，从而使其逆着流动方向游动。生物微游动体和合成主动粒子都表现出逆流运动性。对于生物微游动体，如大肠杆菌和哺乳动物精子，其前后体不对称性以及由此产生的与壁面的流体动力学相互作用，通常被用来解释其逆流游动行为（20, 21, 25, 29-31）。</p>
+<p>另一方面，对于可忽略大小的点状主动粒子，逆流游动现象仍然存在（24, 27）。考虑一个点状主动粒子接近壁面的情况：其前端必须指向壁面。在壁面附近，泊肃叶流（在其最大值处）的涡度总是使粒子重新定向到上游方向（也见材料与方法部分）（27），然后它们沿着壁面逆流游动（图1，A和B）。许多其他因素，如体形不对称、鞭毛的手性以及细菌与边界之间的流体动力学相互作用，也会影响逆流游动行为。最近的实验（32）已经证明了在微流控通道中大肠杆菌的超污染现象，这凸显了其幂律运行时间分布的重要性，该分布显著增强了细菌逆流游动的倾向，使细菌能够持续逆着流动方向游动。</p>
+<p>预防细菌污染的主流策略包括以下几种：</p>
+<ul>
+<li>
+<p>（i）物理屏障，如过滤器或膜（33-38）；</p>
+</li>
+<li>
+<p>（ii）抗菌剂，如抗生素（36, 37）；</p>
+</li>
+<li>
+<p>（iii）对医疗设备进行表面改性以减少细菌粘附和生物膜形成（38-44）；</p>
+</li>
+<li>
+<p>（iv）控制物理/化学环境，如高温/低温、低氧水平或使用消毒剂来抑制细菌的生长和存活（45-48）；</p>
+</li>
+<li>
+<p>（v）严格的消毒程序，如戴手套和穿隔离衣（49-51）；</p>
+</li>
+<li>
+<p>（vi）定期监测患者状况，以便及早发现并治疗细菌污染（52-54）。</p>
+</li>
+</ul>
+<p>虽然已经提出了各种表面改性或涂层来减少细菌粘附，但尚未有研究表明它们能有效防止逆流游动或导管污染（38-40）。其他被动的抗菌方法，如膜或过滤，可能难以直接应用于留置导管的患者。</p>
+<p>与抗生素或其他化学方法相比，通过几何形状控制微生物分布在抗生素耐药性方面更为安全（55-58）。在其他情况下，已经使用了特定形状来限制和捕获不需要的细菌（59）。由于“干燥”的几何整流效应，不对称形状也可以影响运动细菌的分区（60, 61），并且挤出的边界形状可以局部增强泊肃叶流的涡度，增强程度与挤出曲率成正比。</p>
+<p>我们致力于设计能够防止细菌逆流游动并最大程度减少污染的导管。为了优化导管的几何形状，我们将设计空间限制为在导管内壁放置三角形障碍物。我们捕捉了自驱动球体出现的最简单的逆流游动物理机制（27），并进行了流体和粒子动力学模拟，以找出几何设计原则（图1C）。我们将流体动力学和几何整流效应结合为一个随机偏微分方程（SPDE），以此模拟细菌的分布。然后，我们使用模拟数据训练了一个基于几何聚焦傅里叶神经算子（Geo-FNO）的人工智能（AI）模型（62, 63），以学习SPDE的解，并使用训练好的模型来优化导管的几何形状（图1D）。基于优化后的设计，我们制造了准二维（2D）微流控装置（图1E）和3D打印的原型导管（图1F），以评估我们的概念的有效性。实验结果表明，与我们的标准导管相比，细菌超污染抑制效果提高了多达两个数量级，这为导管相关尿路感染（CAUTI）的管理提供了一条新途径。</p>
+<p><a class="glightbox" href="https://dataset.bj.bcebos.com/PaddleScience/2024%20AI-aided%20geometric%20design%20of%20anti-infection%20catheters/catheter.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="图1. 提出的导管相关尿路感染（CAUTI）机制与抗感染设计流程示意图" src="https://dataset.bj.bcebos.com/PaddleScience/2024%20AI-aided%20geometric%20design%20of%20anti-infection%20catheters/catheter.png"></a></p>
+<p><strong>图1. 提出的导管相关尿路感染（CAUTI）机制与抗感染设计流程示意图</strong></p>
+<ul>
+<li><strong>（A）提出的CAUTI机制</strong>：尿液从患者膀胱内通过导管向外流出时，细菌能够逆着尿流方向（即上游）游动，进而可能侵入患者体内并引发感染。</li>
+<li><strong>（B）细菌的跑动-翻滚运动与上游游动机制</strong>：细菌通过一种特有的跑动-翻滚运动模式，在液体环境中实现上游游动。</li>
+<li><strong>（C）模拟探索导管形状</strong>：利用模拟技术，探索不同导管形状对细菌上游游动的影响，以期找到能够抑制细菌上游游动的导管设计。</li>
+<li><strong>（D）人工智能辅助优化</strong>：采用Geo-FNO框架进行人工智能辅助优化，进一步细化导管的设计参数，提升其对细菌上游游动的抑制效果。</li>
+<li><strong>（E）二维通道微流控实验</strong>：在二维微流控通道中，对优化后的导管设计进行实验验证，评估其在实际流体环境中的抗感染性能。</li>
+<li><strong>（F）三维实验验证</strong>：使用设计的实际尺寸导管进行三维实验，进一步验证其在临床使用条件下的抗感染效果。</li>
+</ul>
+<p>我们致力于设计能够防止细菌向上游移动并最大程度减少污染的导管。为了优化导管的几何形状，我们将设计空间限定为在导管内壁布置三角形障碍物。我们捕捉了自驱动球体所展现的最简单的上游游动物理机制（27），并进行了流体和粒子动力学模拟，以找出几何设计原则（图1C）。通过将流体力学和几何整流效应耦合为随机偏微分方程（SPDE），我们对细菌分布进行了建模。随后，我们使用模拟数据训练了一个基于几何聚焦傅里叶神经算子（Geo-FNO）（62, 63）的人工智能（AI）模型，以学习SPDE的解，并利用训练好的模型来优化导管的几何形状（图1D）。基于优化后的设计，我们制作了准二维（2D）微流控装置（图1E）和3D打印的原型导管（图1F），以评估我们的设计理念的有效性。实验结果表明，与标准导管相比，我们的设计在抑制细菌超标污染方面提高了多达两个数量级，为导管相关尿路感染（CAUTI）的管理提供了一条新途径。</p>
+<h3 id="21">2.1 探究微观机制<a class="headerlink" href="#21" title="Permanent link">¶</a></h3>
+<p>我们采用了一个简单的模型（27）来描述剪切流中细菌的动力学行为。在这个模型中，细菌被近似为可忽略大小的球体，其方向<span class="arithmatex">\(q\)</span>由以下方程得出：
+基于细菌上游游泳的物理机制，建立相应的数学模型,通常使用 ABP 模型进行表示：</p>
+<div class="arithmatex">\[
+\frac{d\vec{q}}{dt} = \frac{1}{2} \vec{\omega} + \frac{2}{\tau_R} \eta(t) \times \vec{q}
+\]</div>
+<p>该模型考虑了细菌与导管壁之间的流体动力学相互作用，以及细菌的形状、大小和表面性质等因素。
+其中</p>
+<ul>
+<li><span class="arithmatex">\(dt(q)\)</span> 代表细菌方向变化率</li>
+<li><span class="arithmatex">\(ω\)</span> 代表局部流体涡量</li>
+<li><span class="arithmatex">\(η(t)\)</span> 代表高斯噪声, 满足<span class="arithmatex">\(&lt;η(t)&gt;=0\)</span> 和 <span class="arithmatex">\(&lt;η(0)η(t)&gt;=\delta(t)I\)</span></li>
+<li><span class="arithmatex">\(\vec{q}\)</span> 代表细菌方向向量</li>
+<li><span class="arithmatex">\(\tau_R\)</span> 代表平均运行时间(更多细节详见补充材料)</li>
+</ul>
+<p>我们首先通过数值模拟研究了传统表面改性方法，如抗菌nm粒子涂层（36, 42）、工程化粗糙度或疏水性处理（65, 66），在抑制细菌上游游动中的作用。这些改性表面能够防止细菌过于接近壁面。为了模拟这些表面的存在，我们假设它们会导致细菌从表面脱离，并至少保持在距离表面3μm的位置，这个距离超过了典型的E.coli大肠杆菌体长（1至2μm）。虽然表面改性也可能影响细菌与壁面之间的流体力学相互作用，但在我们基于点状球体的简单通用模型中忽略了这一点。</p>
+<p>我们发现，在所测试的流速范围内，表面排斥对细菌的上游游动行为几乎没有影响。通过比较光滑通道内（图2D）和表面改性通道内（图2E）持续游动细菌的模拟轨迹，我们发现它们的上游游动行为相似。</p>
+<p>我们采用两个群体统计指标来量化抑制细菌上游游动的有效性：</p>
+<ul>
+<li>
+<p>（i）平均上游游动距离<span class="arithmatex">\(x_{up}=-\int_{0}^{-\infty}\rho(x)xdx\)</span>，通过计算细菌分布函数<span class="arithmatex">\(ρ(x)\)</span>的加权平均值得出，其中<span class="arithmatex">\(x\)</span>为细菌位置；</p>
+</li>
+<li>
+<p>（ii）前<span class="arithmatex">\(1\%\)</span>上游游动最远的细菌所能到达的距离<span class="arithmatex">\(x_{1\%}\)</span>。模拟结果显示，表面改性仅在中等流速下略微减少了<span class="arithmatex">\(x_{up}\)</span>，但对<span class="arithmatex">\(x_{1\%}\)</span>几乎没有影响（图2F中的蓝线和粉线）。这种表面改性效果不佳的结果与近几年一些论文的实验观察结果一致（39, 40）。</p>
+</li>
+</ul>
+<p>随后，我们通过添加物理障碍物来探索导管表面几何形状的作用。我们发现，对称和不对称的障碍物都能显著抑制细菌的上游游动（如图2F中的黑色和绿色线条所示）。我们确定了两种协同效应：首先，障碍物的斜率会在细菌从障碍物顶部出发时改变其游动方向，从而打断了它们沿着管壁表面的连续攀爬。不对称的形状会使细菌的运动偏向下游（如图2A所示），这在模拟的0流速下的轨迹（补充材料和图S1）以及低流速下上游游动统计数据的差异（图2F中的黑色和绿色线条）中均有所体现。其次，在有限的流速下，流场与光滑通道中的泊肃叶流不同（如图2B所示）。在泊肃叶流中，涡量会使细菌转向下游。而在障碍物附近，涡量会增强，导致细菌转向上游（如图2C和补充材料图S2所示）, 从而加强了细菌的转向机制。结合这两种效应，我们预计在具有优化障碍物几何形状的通道中，细菌的上游游动将显著减少。</p>
+<p>设计优化的参数空间由四个参数表征：障碍物基底长度<span class="arithmatex">\(L\)</span>、高度<span class="arithmatex">\(h\)</span>、尖端位置<span class="arithmatex">\(s\)</span>以及障碍物间距<span class="arithmatex">\(d\)</span>；我们用W表示通道宽度（图2G）。为了优化这个空间，我们设定了两个约束条件。首先，如果相邻障碍物过于接近，它们尖端的涡旋就会开始重叠。由于这种重叠，最大有效涡旋强度（正好在障碍物尖端；有效涡旋的数学定义见补充材料）和涡旋的有效尺寸都会减小。此外，还会形成更大的边界层和滞流区（图S2，A和B）。因此，我们将障碍物间距约束为<span class="arithmatex">\(d &gt; 0.5W\)</span>（图S2G）。其次，在其他参数固定的情况下，随着h的增加，障碍物尖端的有效涡旋强度也会增加（图S2，C至H），这有利于促进涡旋重定向效应。然而，当<span class="arithmatex">\(h = W/2\)</span>时，管道显然会发生堵塞。这种随着<span class="arithmatex">\(h\)</span>增加而堵塞加剧的趋势反映在为了保持相同的有效流速而所需压力降的持续增加上（图S2I）。为了避免堵塞，我们将高度约束为<span class="arithmatex">\(h &lt; 0.3W\)</span>。</p>
+<p><a class="glightbox" href="https://dataset.bj.bcebos.com/PaddleScience/2024%20AI-aided%20geometric%20design%20of%20anti-infection%20catheters/catheter2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="图2. 障碍物抑制上游游动和几何优化的物理机制" src="https://dataset.bj.bcebos.com/PaddleScience/2024%20AI-aided%20geometric%20design%20of%20anti-infection%20catheters/catheter2.png"></a></p>
+<p><strong>图2. 障碍物抑制上游游动和几何优化的物理机制</strong></p>
+<ul>
+<li>
+<p><strong>（A）无流动时的几何整流效应</strong>：描述了在没有流体流动的情况下，几何形状对细菌游动方向的影响。</p>
+</li>
+<li>
+<p><strong>（B）光滑通道中的泊肃叶流</strong>：彩色背景显示流涡量的相对大小，颜色越深表示涡量越大。在光滑通道中，泊肃叶流产生的涡量使细菌头部向下游旋转。</p>
+</li>
+<li>
+<p><strong>（C）带有对称障碍物的通道中的流动</strong>：在带有对称障碍物的通道中，障碍物顶部附近的流速和涡量增强，这导致更强的扭矩作用在细菌上，使其重定向至下游。</p>
+</li>
+<li>
+<p><strong>（D）和（E）不同条件下的细菌模拟轨迹</strong>：</p>
+</li>
+<li>
+<ul>
+<li><strong>（D）光滑通道</strong>：在宽度为50μm的二维光滑通道中，细菌的模拟轨迹显示其持续游动状态。</li>
+</ul>
+</li>
+<li>
+<ul>
+<li><strong>（E）排斥细菌的表面改性通道</strong>：在表面经过改性以排斥细菌的通道中，细菌的游动轨迹受到显著影响。</li>
+</ul>
+</li>
+<li>
+<p><strong>（F）上游游动的群体统计</strong>：</p>
+</li>
+<li>
+<ul>
+<li>实线（左侧y轴）表示平均上游距离，反映了细菌群体在上游方向上的平均游动距离。</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>虚线（右侧y轴）表示群体中前1%游动者的上游距离，揭示了少数高效游动细菌的表现。</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>不同颜色的线条代表不同的通道条件：蓝色为光滑通道，橙色为表面改性通道，黑色为对称障碍物通道，绿色为不对称障碍物通道。</li>
+</ul>
+</li>
+<li>
+<p><strong>（G）AI算子神经网络模型和结果</strong>：</p>
+</li>
+<li>
+<ul>
+<li>Geo-FnO模型旨在学习导管几何形状与细菌分布之间的关系，通过一系列神经算子层实现。</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>模型首先将不规则的通道几何形状映射到单位段[0,1]，然后在潜在空间中应用基于傅里叶的内核进行预测。</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>最后，将预测的细菌分布从潜在空间转换回物理空间。</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>右图展示了随机初始条件（黑色）和优化后的设计（粉色）的对比，以及通过流体和粒子动力学模拟验证的Geo-FnO预测结果（绿色虚线）。</li>
+</ul>
+</li>
+</ul>
+<p><a class="glightbox" href="https://dataset.bj.bcebos.com/PaddleScience/2024%20AI-aided%20geometric%20design%20of%20anti-infection%20catheters/catheter3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="图3. 微流控实验" src="https://dataset.bj.bcebos.com/PaddleScience/2024%20AI-aided%20geometric%20design%20of%20anti-infection%20catheters/catheter3.png"></a></p>
+<p><strong>图3. 微流控实验</strong></p>
+<ul>
+<li>
+<p><strong>（A）微流控实验示意图</strong>：微流控通道的一端连接着装有成像溶液的注射器，另一端则连接着装有大肠杆菌的储液池。长箭头表示流动方向。</p>
+</li>
+<li>
+<p><strong>（B）细菌在锐角处的积聚</strong>：由于流动停滞，细菌在通道的锐角处积聚。</p>
+</li>
+<li>
+<p><strong>（C）微流控通道的明场图像</strong>：展示了通道的实际结构。</p>
+</li>
+<li>
+<p><strong>（D）细菌从通道壁上脱落的典型事件</strong>：</p>
+</li>
+<li>
+<ul>
+<li>细菌（白色点）的轨迹在过去5s内以黄色线条显示。</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>上图展示了一种类型1的轨迹，其中细菌从障碍物尖端脱落。</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>下图展示了一种典型的类型2轨迹，其中细菌从通道的平滑部分脱落。</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>左列为实验图像，右列为模拟图像。</li>
+</ul>
+</li>
+<li>
+<p><strong>（E）脱落事件的统计</strong>：提供了关于细菌脱落事件的统计数据。</p>
+</li>
+</ul>
+<p><a class="glightbox" href="https://dataset.bj.bcebos.com/PaddleScience/2024%20AI-aided%20geometric%20design%20of%20anti-infection%20catheters/catheter4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="图4. 3D打印导管原型的实验" src="https://dataset.bj.bcebos.com/PaddleScience/2024%20AI-aided%20geometric%20design%20of%20anti-infection%20catheters/catheter4.png"></a></p>
+<p><strong>Fig. 4. 3D打印导管原型的实验</strong></p>
+<ul>
+<li>
+<p><strong>（A）实验设置</strong>：导管的下游端连接到大肠杆菌的储液池，上游端连接到由注射泵控制的装满培养液的注射器。1小时后，将导管切成等长段，并提取内部液体进行24小时培养。在显微镜下计数大肠杆菌菌落的数量，以反映每段导管中的细菌数量。</p>
+</li>
+<li>
+<p><strong>（B）光滑导管中的大肠杆菌超污染</strong>：展示了在光滑导管中大肠杆菌的污染情况。</p>
+</li>
+<li>
+<p><strong>（C）设计导管与光滑导管的比较</strong>：对比了设计导管与光滑导管在细菌污染方面的差异。插图显示了相同数据在对数尺度上的绘制。</p>
+</li>
+</ul>
+<h3 id="22-ai">2.2 AI辅助优化的几何设计<a class="headerlink" href="#22-ai" title="Permanent link">¶</a></h3>
+<p>近年来，基于人工智能（AI）的模型，如神经算子，已被用于学习流体动力学和其他领域的正向模拟或观测模型的替代品。由于这些模型是可微分的，因此它们可以直接用于逆向设计，即我们可以使用梯度直接在设计空间中进行优化。这使得生成以前未研究过的设计变得更加简洁高效。我们使用了一个AI模型来优化通道形状，该形状由上述描述的四个参数和两个约束条件表征（图2G）。这种方法首先将不规则的通道几何形状映射到潜在空间（一个单位的导管片段长度<span class="arithmatex">\([0,1]\)</span>）中的一个函数，然后在潜在空间中应用傅里叶神经算子（FNO）模型，最后将细菌分布转换回物理空间（图2G）。然后，我们使用这个训练好的替代模型进行逆向设计优化，以确定最佳的通道形状。为了评估每种设计的有效性，我们测量了在<span class="arithmatex">\(T=500\)</span>s时，三种流速（<span class="arithmatex">\(5、10\)</span>和<span class="arithmatex">\(15μm/s\)</span>）下的平均⟨<span class="arithmatex">\(x_{up}\)</span>⟩值。我们基于几何感知傅里叶神经算子的AI辅助形状设计，在加权细菌分布方面比训练数据中的给定形状提高了约<span class="arithmatex">\(20\%\)</span>。整个设计优化过程非常快速：并行生成1000个训练实例（在50个GPU上运行10小时），每个实例需要30分钟；在1个GPU上训练模型需要20分钟；而我们训练好的AI模型在1个GPU上生成最优设计仅需15s。优化过程得出了以下最优结构参数：<span class="arithmatex">\(d=62.26μm，h=30.0μm，s=-19.56μm，L=12.27μm\)</span>，对于通道宽度<span class="arithmatex">\(W=100μm\)</span>。根据上文所述的机制，这种结构提供了强大的几何整流和涡旋重定向效应，以抑制细菌的逆流游动。</p>
+<h3 id="23">2.3 微流控实验<a class="headerlink" href="#23" title="Permanent link">¶</a></h3>
+<p>为了评估优化结构的有效性，我们制作了宽度<span class="arithmatex">\(W=100μm\)</span>（壁到壁的距离）且垂直深度为20μm的准二维微流控通道，以便在显微镜下观察细菌的运动情况（图3A）。我们选取了逆流游动的细菌子集，并根据它们从壁上脱落的位置进行了分类。如果细菌从障碍物的顶部脱落，则将其轨迹标记为“类型1”（图3D，上方）；如果细菌从壁的平滑部分脱落，则将其标记为“类型2”（图3D，下方）。类型1的轨迹会同时受到几何整流和增强的流体动力学旋转破坏效应的影响。而类型2的轨迹则不会受到几何整流效应的影响，仅会受到轻微的涡旋重定向效应，因为涡量的增强在障碍物尖端最为强烈。对于流速<span class="arithmatex">\(U_0&lt;100μm/s\)</span>的情况，70%到80%的逆流游动轨迹属于类型1（图3E）。我们还注意到，在这些实验中观察到的所有逆流游动轨迹都被重定向到了下游（图3E，红线）。在尖锐的拐角附近观察到了细菌积聚现象（图3B），这可能是由于停滞区的存在（图2C和附图S1，拐角附近的白色区域）。为了防止细菌在拐角处积聚，我们将几何形状用半径<span class="arithmatex">\(r=h/2\)</span>的圆弧进行了圆滑处理（图3C）。</p>
+<h3 id="24">2.4 宏观尺度导管实验<a class="headerlink" href="#24" title="Permanent link">¶</a></h3>
+<p>上述展示的机制和设计原则很容易扩展到导管上。在三维管道中，细菌可以通过横截面的任何切割线穿过管道（附图S2J）。由于与上述相同的机制（图2，A、B、F至I，以及附图S1），仅在壁附近的无量纲剪切率起作用（27），因此靠近边界移动的细菌（附图S2J中的轨迹1）仍然可以逆流游动。超污染细菌的游动距离可以超过1mm（32），这与重新缩放的障碍物尺寸相当，预计在这些尺度上整流效应会持续存在（61）。数量级估计表明，也可以采用伴随方法的雷诺数下降（71）。我们注意到，几何设计不能完全消除细菌的逆流游动，特别是在接近零流速的情况下。然而，它极大地减少了超污染的数量，并可能显著延长导管的留置时间。使用我们设计的导管预计不需要改变常规临床方案或重新培训医务人员。此外，我们的解决方案不会向导管中引入化学物质，因此是安全的，并且不需要额外的维护。我们的几何设计方法预计与其他程序措施、抗菌表面改性和环境控制方法兼容。</p>
+<p><a class="glightbox" href="https://dataset.bj.bcebos.com/PaddleScience/2024%20AI-aided%20geometric%20design%20of%20anti-infection%20catheters/catheterS1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="S1. 微流控实验" src="https://dataset.bj.bcebos.com/PaddleScience/2024%20AI-aided%20geometric%20design%20of%20anti-infection%20catheters/catheterS1.png"></a></p>
+<p><strong>图S1. 主动布朗粒子的模拟轨迹示例</strong></p>
+<p>在（A）（C）具有对称障碍物的通道中和（B）（D）具有不对称障碍物的通道中的轨迹。（A）（B）无流体流动。（C）（D）有流体流动。颜色表示局部归一化涡量。</p>
+<p><a class="glightbox" href="https://dataset.bj.bcebos.com/PaddleScience/2024%20AI-aided%20geometric%20design%20of%20anti-infection%20catheters/catheterS2-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="S2. 主动布朗粒子的模拟轨迹示例" src="https://dataset.bj.bcebos.com/PaddleScience/2024%20AI-aided%20geometric%20design%20of%20anti-infection%20catheters/catheterS2-1.png"></a>
+<a class="glightbox" href="https://dataset.bj.bcebos.com/PaddleScience/2024%20AI-aided%20geometric%20design%20of%20anti-infection%20catheters/catheterS2-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="S2. 主动布朗粒子的模拟轨迹示例" src="https://dataset.bj.bcebos.com/PaddleScience/2024%20AI-aided%20geometric%20design%20of%20anti-infection%20catheters/catheterS2-2.png"></a></p>
+<p><strong>图S2. 几何优化约束和缩放的考虑因素</strong></p>
+<ul>
+<li>（A-H）归一化涡量作为障碍物高度ℎ和障碍物间距𝑑的函数。</li>
+<li>（I）沿通道一个周期内的归一化压降作为归一化障碍物高度ℎ/𝑑的函数。</li>
+<li>（J）宏观圆柱形管内细菌运动的横截面视图。与轨迹2相比，轨迹2中的细菌在管中心附近经历强烈的下游流动，而采取轨迹1的另一个细菌则靠近管壁。因此，细菌1所经历的流动条件与我们考虑的微流控通道中的条件更为相似。其上游游动行为和几何抑制机制将与微流控条件相似，只是存在定量上的差异。</li>
+</ul>
+<h3 id="25">2.5 流体和粒子动力学模拟<a class="headerlink" href="#25" title="Permanent link">¶</a></h3>
+<p>我们使用COMSOL软件（72）模拟了具有无滑移边界条件的通道内的斯托克斯流。随后，将得到的速度和涡量场耦合到粒子动力学模拟中，而在稀释悬浮液和小粒子尺寸的极限情况下，忽略了粒子运动对流体动力学的反馈。粒子动力学由具有高斯统计特性的主动布朗粒子（ABP）模型和具有幂律（Levy）统计特性的运行-休止（RTP）模型描述。模拟是使用我们内部开发的GPU Julia代码进行的，模拟时间步长为10^-4s。在ABP模型中，单个粒子的动力学是根据过阻尼的朗之万方程进行积分的。</p>
+<div class="arithmatex">\[0=-\zeta(U-u)+\zeta U_0q(t)+\sqrt{2D_T\xi(t)}\]</div>
+<div class="arithmatex">\[d{q}/dt=\left[1/2{\omega}+B{q}\times(\mathbf{E}\cdot{q})+\sqrt{2/\tau_R{\eta}({t})}\right]\times{q}\]</div>
+<p>其中，<span class="arithmatex">\(ζ\)</span>是粘性阻力系数，<span class="arithmatex">\(U\)</span>是粒子的速度，<span class="arithmatex">\({q}\)</span>是粒子的方向向量，<span class="arithmatex">\(u\)</span>是局部流速，<span class="arithmatex">\(ω\)</span>是局部流场的涡量向量，<span class="arithmatex">\(E\)</span>是流场的局部应变率张量。<span class="arithmatex">\(B\)</span>是一个几何系数（3、74），对于无限细的杆状物体，它等于1，对于球体，它等于0。由于B的值对上游游动统计的影响不显著（27），因此我们在这里展示的结果中设<span class="arithmatex">\(B=0\)</span>。<span class="arithmatex">\(ξ(t)\)</span>是满足<span class="arithmatex">\(⟨ξ(t)⟩=0和⟨ξ(0)ξ(t)⟩=δ(t)I\)</span>的高斯随机噪声。由于细菌是μm级的粒子，它们的布朗运动相对较弱，因此在模拟中我们将平移扩散系数DT设置为<span class="arithmatex">\(0.1 μm²/s\)</span>。只要这个值保持较小，其变化对结果的影响就不大。</p>
+<p>η是满足<span class="arithmatex">\(⟨η(t)⟩=0和⟨η(0)η(t)⟩=δ(t)I\)</span>的高斯噪声，τR是平均运行时间。在RTP（Run-and-Tumble，奔跑-翻滚）模型中，单个粒子在<span class="arithmatex">\(0&lt;t&lt;τ_R\)</span>的时间内以<span class="arithmatex">\(η(t)=0\)</span>（即“奔跑”阶段）进行位移。然后，<span class="arithmatex">\({q}\)</span>会瞬间改变为一个随机的新方向<span class="arithmatex">\({q'}\)</span>（即“翻滚”），并以新的运行时间<span class="arithmatex">\(τ_R\)</span>重复此过程。对于Lévy游动粒子，运行时间是从Pareto分布中采样的，该分布的形式为:</p>
+<div class="arithmatex">\[ϕ(τ)=\frac{(ατ₀^α)}{(τ+τ₀)^{(α+1)}}\]</div>
+<p>，其中<span class="arithmatex">\(1&lt;α&lt;2\)</span>的参数控制幂律指数（75）。</p>
+<p>为了简化，我们将细菌的形状视为可忽略大小的球体。在图2J的机制演示中，我们在一个50μm宽的二维通道中模拟了1,000,000个粒子，每个粒子的持续运行时间<span class="arithmatex">\(τ_R\)</span>为2s，模拟总时间为200s。沿通道方向，对流场和粒子动力学都施加了周期性边界条件。因此，通道在效果上是无限长的，并且障碍物也是每隔100μm重复一次。粒子在计算域的<span class="arithmatex">\(x=\)</span>处释放，最初在通道中均匀分布且随机定向。</p>
+<p>对于设计的通道，除了表面涂层的情况外，在墙壁的几何边界上施加了粒子动力学的滑动边界条件和流体力学的无滑移边界条件。在表面涂层的情况下，无滑移边界位于墙壁处，而粒子的滑动边界条件则设置在距离墙壁<span class="arithmatex">\(3μm\)</span>的位置。</p>
+<h3 id="26-geo-fnomachine-learning">2.6 Geo-Fno模型和Machine Learning配置<a class="headerlink" href="#26-geo-fnomachine-learning" title="Permanent link">¶</a></h3>
+<p>导管设计问题是一个受随机偏微分方程（SPDE）约束的优化问题，其中目标函数</p>
+<div class="arithmatex">\[⟨x_{up}⟩ = - ∫^{-∞}_{0} ρ(x)xdx ≈ - \frac{1}{N} ∑_{i=1}^{N} xi\]</div>
+<p>依赖于流体和粒子动力学问题的SPDE解。这里，ρ(x)是在<span class="arithmatex">\(T=500 s\)</span>时的经验细菌分布函数，由<span class="arithmatex">\(N\)</span>个细菌近似表示。传统的优化方法需要反复评估这种计算成本高昂的模型，并且在应用基于梯度的优化时还需要一个伴随求解器。为了克服这些计算挑战，我们训练了一个几何傅里叶神经算子（Geo-FNO）G作为前向流体和粒子动力学模拟的替代模型，该模型将通道几何形状映射到细菌种群函数<span class="arithmatex">\(G: c → ρ\)</span>。相比之下，先前使用人工智能方法解决各种设计问题的工作仅选择了少数几个参数作为SPDE传统求解器的输入（76, 77）。完整模型由五个带有高斯误差线性单元（GeLU）激活层的傅里叶神经层组成，具有快速的准线性时间复杂度。</p>
+<p>我们使用ABP和Levy RTP模型进行了三种最大流速（5、10和15μm/s）下的流体和粒子动力学模拟，以生成Geo-FNO的训练和测试数据。对于训练数据，我们在50个GPU上并行生成了1000个模拟，耗时10小时，每个模拟中的设计随机选自以下参数空间：</p>
+<ul>
+<li>高度为<span class="arithmatex">\(20μm &lt; h &lt; 30μm\)</span>的障碍物周期性地放置在通道壁上</li>
+<li>障碍物间距离为<span class="arithmatex">\(60μm &lt; d &lt; 250μm\)</span></li>
+<li>基底长度满足<span class="arithmatex">\(15μm &lt; L &lt; \frac{d}{4}\)</span>，并且尖端位置满足<span class="arithmatex">\(-\frac{d}{4} &lt; s &lt; \frac{d}{4}\)</span>。</li>
+</ul>
+<p>这些参数的约束条件是为了满足制造限制和涡旋生成机制的物理条件（图2，B和C；更多讨论见补充文本和附图S2）。数据集被存储起来以供未来任务重复使用。我们使用相对经验均方误差作为损失函数。模型训练在1个GPU上使用Adam优化器进行了20分钟。它在100个测试数据点上获得了大约<span class="arithmatex">\(4\%\)</span>的相对误差。</p>
+<h3 id="27">2.7 基于梯度的快速逆向设计优化<a class="headerlink" href="#27" title="Permanent link">¶</a></h3>
+<p>我们的人工智能方法相较于传统求解器具有显著的速度优势，并且其可微性使得能够快速应用基于梯度的方法进行几何设计优化。在GPU上，每次评估仅需0.005s，而使用基于GPU的流体和粒子动力学模拟则需要10分钟，因此，在优化过程中进行数千次评估变得切实可行。此外，我们利用深度学习包中的自动微分工具，高效计算相对于设计变量的梯度，从而能够应用基于梯度的设计优化方法。</p>
+<p>在优化过程中，我们从初始设计参数（<span class="arithmatex">\(d = 100 μm, h = 25 μm, s = 10 μm, L = 20 μm\)</span>）开始，并使用Broyden–Fletcher–Goldfarb–Shanno（BFGS）算法来最小化由Geo-FNO预测的细菌种群后处理得到的目标函数<span class="arithmatex">\(⟨x_{up}⟩\)</span>。当优化陷入局部最小化点时，我们会通过向记录的全局最小化点添加一个从<span class="arithmatex">\(N(0, I)\)</span>中采样的随机高斯噪声来生成新的初始条件，并重新启动优化过程。</p>
+<p>这种方法不仅提高了优化效率，还增强了设计优化的灵活性和准确性。通过快速迭代和精确梯度计算，我们能够更快地找到满足特定性能要求的设计参数，为导管设计等复杂工程问题提供了有力的解决方案。</p>
+<p>我们提出的随机化BFGS算法能够确保记录的全局最小化值单调递减。优化损失轨迹如图S1所示，损失值从<span class="arithmatex">\(L = 6.68 × 10^5\)</span>。基于人工智能的优化方法大约经过1500次迭代后达到了最优设计。整个流程，从数据生成（在50个GPU上并行对1000个实例进行，每个实例耗时30分钟，总共10小时）到模型训练（在1个GPU上耗时20分钟），再到设计优化（在1个GPU上耗时15s）以及最终的验证（在1个GPU上耗时10分钟），总共耗时不到1天。</p>
+<p>在给定的参数约束条件下，目标函数⟨<span class="arithmatex">\(x_{up}\)</span>⟩关于这些设计变量既不是凸函数也不是单调函数，但通常随着h的增大、d的减小和s的增大而减小（见图S3）。最终优化得到的设计参数为：<span class="arithmatex">\(d = 62.26 μm，h = 30.0 μm，s = −19.56 μm\)</span>，以及<span class="arithmatex">\(L = 15.27 μm\)</span>。</p>
+<p><a class="glightbox" href="https://dataset.bj.bcebos.com/PaddleScience/2024%20AI-aided%20geometric%20design%20of%20anti-infection%20catheters/catheterS3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="S3. 优化细节" src="https://dataset.bj.bcebos.com/PaddleScience/2024%20AI-aided%20geometric%20design%20of%20anti-infection%20catheters/catheterS3.png"></a></p>
+<p><strong>图S3. 优化细节</strong></p>
+<ul>
+<li>
+<p>A. Geo-FNO的训练和测试误差：Geo-FNO（可能是某种基于几何特征的神经网络优化器）的训练和测试误差均收敛，且没有出现过拟合现象。这表明模型在训练集上学习得很好，同时也在测试集上保持了良好的泛化能力。</p>
+</li>
+<li>
+<p>B. 由随机化BFGS算法加速的Geo-FNO代理模型得到的优化损失：使用Geo-FNO代理模型加速的随机化BFGS算法（一种优化算法）在大约1500次迭代后达到了记录的全局最小损失。这显示了算法在寻找最优解方面的效率和准确性。</p>
+</li>
+<li>
+<p>C. Geo-FNO在<span class="arithmatex">\(ℎ-𝑑\)</span> 横截面优化设计周围的损失景观可视化</p>
+</li>
+<li>
+<p>D. Geo-FNO在<span class="arithmatex">\(L-s\)</span> 横截面优化设计周围的损失景观可视化</p>
+</li>
+<li>
+<p>E. Geo-FNO在<span class="arithmatex">\(d-s\)</span> 横截面优化设计周围的损失景观可视化</p>
+</li>
+</ul>
+<h3 id="28">2.8 细菌菌株、培养条件、材料和化学品<a class="headerlink" href="#28" title="Permanent link">¶</a></h3>
+<p>对于3D导管长期实验，我们使用了具有卡那霉素抗性的野生型<span class="arithmatex">\(BW25113\)</span>大肠杆菌；而对于微流控实验，则使用了表达mScarlet红色荧光蛋白并具有卡那霉素抗性的<span class="arithmatex">\(BW25113\)</span>大肠杆菌。</p>
+<p>从新鲜划线平板上挑取一个目标细菌的单菌落，并将其悬浮在LB培养基中，以制备细菌接种物。起始培养物在<span class="arithmatex">\(37°C\)</span>的LB培养基中过夜培养，直至达到最终浓度约为<span class="arithmatex">\(OD_{600}（600nm处的光密度）= 0.4\)</span>。</p>
+<p>对于微流控实验，将300微升的起始培养物转移到含有100毫升LB培养基的新烧瓶中，并在<span class="arithmatex">\(16°C\)</span>下培养，直至OD600达到0.1至0.2。随后，通过离心（2300g，15分钟）两次清洗细菌，并将其悬浮在由<span class="arithmatex">\(10mM\)</span> potassium phosphate（<span class="arithmatex">\(pH=7.0\)</span>）、<span class="arithmatex">\(0.1mM\)</span> K-EDTA、<span class="arithmatex">\(34mM\)</span> K-acetate、<span class="arithmatex">\(20mM\)</span> sodium lactate和<span class="arithmatex">\(0.005\%\)</span> polyvinylpyrrolidone(34) 组成的运动成像培养基中。这种培养基可以保持细菌的运动能力，同时抑制细胞分裂。储液池中细菌的最终浓度为<span class="arithmatex">\(OD_{600} = 0.02\)</span>。</p>
+<p>对于3D导管长期实验，将3毫升的起始培养物转移到含有500毫升LB培养基的新烧瓶中，并在<span class="arithmatex">\(16°C\)</span>下培养，直至<span class="arithmatex">\(OD_{600}\)</span>达到0.4。然后直接使用这些细菌，并将其注入到细菌储液池中。</p>
+<p>在所有培养基和LB平板中都添加了卡那霉素。在实验开始前10分钟，使用荧光显微镜（对于<span class="arithmatex">\(BW25113\)</span>使用差分干涉对比（DIC）光学系统观察，对于<span class="arithmatex">\(BW25113\)</span> mScarlet菌株则使用红色通道落射荧光观察）检查细菌的运动能力。</p>
+<h3 id="29">2.9 微流控实验<a class="headerlink" href="#29" title="Permanent link">¶</a></h3>
+<p>为了展示设计的机制和测试优化结构的有效性，研究者们制作了准二维（quasi-2D）微流控通道，以便在显微镜下观察细菌的运动。这些微流控设备是通过光刻和聚二甲基硅氧烷（polydimethylsiloxane，PDMS）软光刻技术制作的。如图3A所示，微流控通道的一端连接着装有成像溶液的注射器，另一端连接着装有E. coli（大肠杆菌）的储液池。通过调整注射器相对于下游出口的高度来控制流速。为了实时监测流速，向成像溶液中注入了荧光珠作为被动示踪剂。</p>
+<p>实验使用了奥林巴斯BX51WI显微镜，并配备了两个Photometrics Prime95B相机，通过Hamamatsu的W-View Gemini-2光学分配器连接。使用了奥林巴斯20×干物镜。以12.4帧/s的速度获取时间延迟图像，<span class="arithmatex">\(488nm\)</span>激光强度设置为<span class="arithmatex">\(20%\)</span>。显微镜的焦平面固定在通道深度<span class="arithmatex">\(z\)</span>方向的中部，以避免记录到在通道顶部和底部爬行的细菌。</p>
+<p>实验在三天内进行，每天使用独立的E. coli培养批次，每天进行五次15分钟的记录。使用ImageJ软件（Fiji）进行视频后处理，以提取细菌的轨迹。通过轨迹的前向进展线性度进行过滤，以消除快速向下游移动的轨迹，并直观地突出向上游游动的轨迹。研究者估计向上游游动的时间间隔为<span class="arithmatex">\(10s\)</span>，然后细菌会脱落。最大流速定义为沿通道中心线的最高流速。通过计算向上游脱落间隔期间，细菌和荧光珠沿中心线的最快速度的平均值，来估计瞬时最大流速。在补充材料中提供了几个视频记录。</p>
+<p><video width="640" controls>
+    <source src="https://dataset.bj.bcebos.com/PaddleScience/2024%20AI-aided%20geometric%20design%20of%20anti-infection%20catheters/adj1741_Movie_S1.mp4" type="video/mp4">
+</source></video></p>
+<video width="640" controls>
+    <source src="https://dataset.bj.bcebos.com/PaddleScience/2024%20AI-aided%20geometric%20design%20of%20anti-infection%20catheters/adj1741_Movie_S2.mp4" type="video/mp4">
+</source></video>
+
+<p><strong>视频S1-S2. 不同流动条件下细菌从壁面脱落的记录</strong></p>
+<video width="640" controls>
+    <source src="https://dataset.bj.bcebos.com/PaddleScience/2024%20AI-aided%20geometric%20design%20of%20anti-infection%20catheters/adj1741_Movie_S3.mp4" type="video/mp4">
+</source></video>
+
+<p><strong>视频S3. 实时的优化设计</strong></p>
+<h3 id="210-3d">2.10 3D导管长期实验<a class="headerlink" href="#210-3d" title="Permanent link">¶</a></h3>
+<p>使用Connex-Triplex 3D打印机打印了原型导管管（包括几何设计款和光滑款）。设计有障碍物的管内部结构与准二维结构相似，但进行了放大，并围绕通道的中心线旋转，使得障碍物成为内壁上的挤出环。考虑到可用的3D打印精度和典型导管的尺寸，这些原型的内径为1.6cm。对于设计有障碍物的管，挤出环之间的间距为1mm。为了便于清除3D打印产生的支撑材料，每根管被打印成两半，长边呈榫头形状，在去除支撑材料后组装成完整的管。</p>
+<p>如图4A所示，管的上端连接到一个由机械泵控制的注射器，以保持恒定的流速。管的下端连接到一个直径为80mm的培养皿，作为E. coli（大肠杆菌）的储液池。1小时后，将管切成<span class="arithmatex">\(2cm\)</span>长的段，并将每段内的液体转移到培养板上，同时丢弃最上游和最下游的段。在室温下培养培养板24小时后，计数每个培养板上的细菌菌落数量，以反映管相应部分的污染量。</p>
+<p>为了计数菌落数量，在培养板上选择了四个圆形、等距、直径为8mm的区域（见图S5）。通过计算这四个区域内菌落的总数，并乘以整个培养板面积与这四个区域面积的比例（即25倍），来估算整个培养板上的菌落总数。当培养板上的菌落过多，变得过于拥挤或重叠以至于无法精确计数时，我们将整个培养板上的菌落总数记为30,000。</p>
+<h3 id="211">2.11 讨论<a class="headerlink" href="#211" title="Permanent link">¶</a></h3>
+<p>在本研究中，我们介绍了一种医用导管内表面的有效几何设计，旨在抑制细菌的逆流游动和过度污染。我们的设计思路是基于阻碍细菌逆流游动的物理机制，同时考虑了具有幂律动力学的球形粒子流变导向的一般模型。由于传染性微生物在形状、鞭毛特征和流体动力学相互作用方面存在差异，为简化设计和提高设计的通用性，本研究采用的简化模型忽略了细菌运动的细节，如鞭毛的螺旋性（29）和与边界的流体动力学相互作用（20）。模拟结果用于指导实验设计，而非特定预测大肠杆菌的实验结果。未来研究可采用更复杂的模型，考虑特定微生物种类的细节。</p>
+<p>我们发现，由于涡旋重叠的相互作用，在障碍物尖端附近会产生有效的涡量，为此我们确定了障碍物之间间距的下限（图S2和补充材料）。障碍物高度的限制是在增强有效涡量和避免管道堵塞之间做出的权衡（图S2）。虽然我们选择使用这种人工智能框架来优化导管的几何形状，但也可以采用其他方法，如结合数值求解器的遗传算法（70）或结合伴随方法的梯度下降法（71）。</p>
+<p>我们注意到，几何设计无法完全消除细菌的逆流游动，尤其是在流速接近零的情况下。然而，它能显著减少过度污染的量，并可能大幅延长导管的留置时间。使用我们设计的导管预计不需要改变常规临床方案或重新培训医务人员。此外，我们的解决方案不会在导管中引入化学物质，因此是安全的，也不需要额外的维护。我们预计，这种几何设计方法将与其他程序措施、抗菌表面改性和环境控制方法相兼容。</p>
+<h2 id="3">3. 问题求解<a class="headerlink" href="#3" title="Permanent link">¶</a></h2>
+<p>论文采用几何聚焦傅里叶神经算子（Geo-FNO）构建AI模型。该模型能够学习并解决与几何形状相关的随机偏微分方程（SPDE），从而实现对导管几何形状的优化，并通过微流体实验和3D打印技术，制作具有不同几何形状的导管原型，并测试其抑制细菌上游游泳的效果。
+接下来开始讲解如何将问题一步一步地转化为 PaddleScience 代码，用深度学习的方法求解该问题。为了快速理解 PaddleScience，接下来仅对模型构建、计算域构建等关键步骤进行阐述，而其余细节请参考 <a href="../../api/arch/">API 文档</a>。</p>
+<h3 id="31">3.1 数据集介绍<a class="headerlink" href="#31" title="Permanent link">¶</a></h3>
+<p>数据文件说明如下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><code>./data.zip/training/</code></th>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"><code>./data.zip/test/</code></th>
+<th style="text-align: center;"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">文件名</td>
+<td style="text-align: center;">说明</td>
+<td style="text-align: center;">文件名</td>
+<td style="text-align: center;">说明</td>
+</tr>
+<tr>
+<td style="text-align: center;">training/x_1d_structured_mesh.npy</td>
+<td style="text-align: center;">形状为(2001, 3003)</td>
+<td style="text-align: center;">test/x_1d_structured_mesh.npy</td>
+<td style="text-align: center;">形状为(2001, 300)</td>
+</tr>
+<tr>
+<td style="text-align: center;">training/y_1d_structured_mesh.npy</td>
+<td style="text-align: center;">形状为(2001, 3003)</td>
+<td style="text-align: center;">test/y_1d_structured_mesh.npy</td>
+<td style="text-align: center;">形状为(2001, 300)</td>
+</tr>
+<tr>
+<td style="text-align: center;">training/data_info.npy</td>
+<td style="text-align: center;">形状为(7, 3003)</td>
+<td style="text-align: center;">test/data_info.npy</td>
+<td style="text-align: center;">形状为(7, 300)</td>
+</tr>
+<tr>
+<td style="text-align: center;">training/density_1d_data.npy</td>
+<td style="text-align: center;">形状为(2001, 3003)</td>
+<td style="text-align: center;">test/density_1d_data.npy</td>
+<td style="text-align: center;">形状为(2001, 300)</td>
+</tr>
+</tbody>
+</table>
+<p>在加载数据之后，需要将 x、y 进行合并，同时对于合并后的训练数据重新 <code>reshape</code> 为 <code>(1000, 2001, 2)</code> 的格式，具体代码如下</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># build data</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">getdata</span><span class="p">(</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="n">x_path</span><span class="p">,</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="n">y_path</span><span class="p">,</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="n">para_path</span><span class="p">,</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="n">output_path</span><span class="p">,</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    <span class="n">n_data</span><span class="p">,</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    <span class="n">n</span><span class="p">,</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    <span class="n">s</span><span class="p">,</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>    <span class="n">is_train</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>    <span class="n">is_inference</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="p">):</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>    <span class="c1"># load data</span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>    <span class="n">inputX_raw</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">x_path</span><span class="p">)[:,</span> <span class="mi">0</span><span class="p">:</span><span class="n">n_data</span><span class="p">]</span>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>    <span class="n">inputY_raw</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">y_path</span><span class="p">)[:,</span> <span class="mi">0</span><span class="p">:</span><span class="n">n_data</span><span class="p">]</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>    <span class="n">inputPara_raw</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">para_path</span><span class="p">)[:,</span> <span class="mi">0</span><span class="p">:</span><span class="n">n_data</span><span class="p">]</span>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>    <span class="n">output_raw</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">output_path</span><span class="p">)[:,</span> <span class="mi">0</span><span class="p">:</span><span class="n">n_data</span><span class="p">]</span>
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>    <span class="c1"># preprocess data</span>
+</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>    <span class="n">inputX</span> <span class="o">=</span> <span class="n">inputX_raw</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">::</span><span class="mi">3</span><span class="p">]</span>
+</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>    <span class="n">inputY</span> <span class="o">=</span> <span class="n">inputY_raw</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">::</span><span class="mi">3</span><span class="p">]</span>
+</span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a>    <span class="n">inputPara</span> <span class="o">=</span> <span class="n">inputPara_raw</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">::</span><span class="mi">3</span><span class="p">]</span>
+</span><span id="__span-2-23"><a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a>    <span class="n">label</span> <span class="o">=</span> <span class="p">(</span><span class="n">output_raw</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">::</span><span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="n">output_raw</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">::</span><span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="n">output_raw</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">::</span><span class="mi">3</span><span class="p">])</span> <span class="o">/</span> <span class="mf">3.0</span>
+</span><span id="__span-2-24"><a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a>
+</span><span id="__span-2-25"><a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a>    <span class="k">if</span> <span class="n">is_inference</span><span class="p">:</span>
+</span><span id="__span-2-26"><a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a>        <span class="n">inputX</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">inputX</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+</span><span id="__span-2-27"><a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a>        <span class="n">inputY</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">inputY</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+</span><span id="__span-2-28"><a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a>        <span class="nb">input</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">arrays</span><span class="o">=</span><span class="p">[</span><span class="n">inputX</span><span class="p">,</span> <span class="n">inputY</span><span class="p">],</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+</span><span id="__span-2-29"><a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a>        <span class="nb">input</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</span><span id="__span-2-30"><a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a>        <span class="k">return</span> <span class="nb">input</span>
+</span><span id="__span-2-31"><a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a>
+</span><span id="__span-2-32"><a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a>    <span class="n">inputX</span> <span class="o">=</span> <span class="n">paddle</span><span class="o">.</span><span class="n">to_tensor</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">inputX</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">"float32"</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">perm</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+</span><span id="__span-2-33"><a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a>    <span class="n">inputY</span> <span class="o">=</span> <span class="n">paddle</span><span class="o">.</span><span class="n">to_tensor</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">inputY</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">"float32"</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">perm</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+</span><span id="__span-2-34"><a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a>    <span class="nb">input</span> <span class="o">=</span> <span class="n">paddle</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">[</span><span class="n">inputX</span><span class="p">,</span> <span class="n">inputY</span><span class="p">],</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+</span><span id="__span-2-35"><a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a>    <span class="n">label</span> <span class="o">=</span> <span class="n">paddle</span><span class="o">.</span><span class="n">to_tensor</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">label</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">"float32"</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">perm</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+</span><span id="__span-2-36"><a id="__codelineno-2-36" name="__codelineno-2-36" href="#__codelineno-2-36"></a>    <span class="k">if</span> <span class="n">is_train</span><span class="p">:</span>
+</span><span id="__span-2-37"><a id="__codelineno-2-37" name="__codelineno-2-37" href="#__codelineno-2-37"></a>        <span class="n">index</span> <span class="o">=</span> <span class="n">paddle</span><span class="o">.</span><span class="n">randperm</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+</span><span id="__span-2-38"><a id="__codelineno-2-38" name="__codelineno-2-38" href="#__codelineno-2-38"></a>        <span class="n">index</span> <span class="o">=</span> <span class="n">index</span><span class="p">[:</span><span class="n">n</span><span class="p">]</span>
+</span><span id="__span-2-39"><a id="__codelineno-2-39" name="__codelineno-2-39" href="#__codelineno-2-39"></a>        <span class="nb">input</span> <span class="o">=</span> <span class="n">paddle</span><span class="o">.</span><span class="n">index_select</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span>
+</span><span id="__span-2-40"><a id="__codelineno-2-40" name="__codelineno-2-40" href="#__codelineno-2-40"></a>        <span class="n">label</span> <span class="o">=</span> <span class="n">paddle</span><span class="o">.</span><span class="n">index_select</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span>
+</span><span id="__span-2-41"><a id="__codelineno-2-41" name="__codelineno-2-41" href="#__codelineno-2-41"></a>        <span class="nb">input</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">reshape</span><span class="p">([</span><span class="n">n</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+</span><span id="__span-2-42"><a id="__codelineno-2-42" name="__codelineno-2-42" href="#__codelineno-2-42"></a>    <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-2-43"><a id="__codelineno-2-43" name="__codelineno-2-43" href="#__codelineno-2-43"></a>        <span class="nb">input</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">reshape</span><span class="p">([</span><span class="n">n</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+</span><span id="__span-2-44"><a id="__codelineno-2-44" name="__codelineno-2-44" href="#__codelineno-2-44"></a>    <span class="n">label</span> <span class="o">=</span> <span class="n">label</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+</span><span id="__span-2-45"><a id="__codelineno-2-45" name="__codelineno-2-45" href="#__codelineno-2-45"></a>    <span class="k">return</span> <span class="nb">input</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">inputPara</span>
+</span></code></pre></div>
+<h3 id="32-geofno">3.2 GeoFNO 模型<a class="headerlink" href="#32-geofno" title="Permanent link">¶</a></h3>
+<p>GeoFNO 是一种基于 <strong>几何聚焦傅里叶神经算子 (Geo-FNO</strong> ) 的机器学习模型，它将几何形状转换到傅里叶空间，从而更好地捕捉形状的特征，并利用傅里叶变换的可逆性，可以将结果转换回物理空间。</p>
+<p>在论文中，该模型能够学习并解决与几何形状相关的偏微分方程（SPDE），从而实现对导管几何形状的优化, 代码表示如下</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">FNO1d</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Layer</span><span class="p">):</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="sd">"""The overall network. It contains 4 layers of the Fourier layer.</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="sd">    1. Lift the input to the desire channel dimension by self.fc0 .</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="sd">    2. 4 layers of the integral operators u' = (W + K)(u).</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="sd">         W defined by self.w; K defined by self.conv .</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="sd">    3. Project from the channel space to the output space by self.fc1 and self.fc2 .</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="sd">    Args:</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="sd">        input_key (Tuple[str, ...], optional): Key to get the input tensor from the dict. Defaults to ("intput",).</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="sd">        output_key (Tuple[str, ...], optional): Key to save the output tensor into the dict. Defaults to ("output",).</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="sd">        modes (int, optional, optional): Number of Fourier modes to compute, it should be the same as</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="sd">            that in fft part of the code below. Defaults to 64.</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="sd">        width (int, optional, optional): Number of channels in each Fourier layer. Defaults to 64.</span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="sd">        padding (int, optional, optional): How many zeros to pad to the input Tensor. Defaults to 100.</span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="sd">        input_channel (int, optional, optional): Number of channels of the input tensor. Defaults to 2.</span>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="sd">        output_np (int, optional, optional): Number of points to sample the solution. Defaults to 2001.</span>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="sd">    Examples:</span>
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="sd">        &gt;&gt;&gt; model = ppsci.arch.FNO1d()</span>
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="sd">        &gt;&gt;&gt; input_data = paddle.randn([100, 2001, 2])</span>
+</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="sd">        &gt;&gt;&gt; input_dict = {"input": input_data}</span>
+</span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="sd">        &gt;&gt;&gt; out_dict = model(input_dict)</span>
+</span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="sd">        &gt;&gt;&gt; for k, v in out_dict.items():</span>
+</span><span id="__span-3-24"><a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="sd">        ...     print(k, v.shape)</span>
+</span><span id="__span-3-25"><a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="sd">        output [100, 1]</span>
+</span><span id="__span-3-26"><a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a><span class="sd">    """</span>
+</span><span id="__span-3-27"><a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a>
+</span><span id="__span-3-28"><a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+</span><span id="__span-3-29"><a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="__span-3-30"><a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a>        <span class="n">input_key</span><span class="o">=</span><span class="p">(</span><span class="s2">"input"</span><span class="p">,),</span>
+</span><span id="__span-3-31"><a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a>        <span class="n">output_key</span><span class="o">=</span><span class="p">(</span><span class="s2">"output"</span><span class="p">,),</span>
+</span><span id="__span-3-32"><a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a>        <span class="n">modes</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span>
+</span><span id="__span-3-33"><a id="__codelineno-3-33" name="__codelineno-3-33" href="#__codelineno-3-33"></a>        <span class="n">width</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span>
+</span><span id="__span-3-34"><a id="__codelineno-3-34" name="__codelineno-3-34" href="#__codelineno-3-34"></a>        <span class="n">padding</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+</span><span id="__span-3-35"><a id="__codelineno-3-35" name="__codelineno-3-35" href="#__codelineno-3-35"></a>        <span class="n">input_channel</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+</span><span id="__span-3-36"><a id="__codelineno-3-36" name="__codelineno-3-36" href="#__codelineno-3-36"></a>        <span class="n">output_np</span><span class="o">=</span><span class="mi">2001</span><span class="p">,</span>
+</span><span id="__span-3-37"><a id="__codelineno-3-37" name="__codelineno-3-37" href="#__codelineno-3-37"></a>    <span class="p">):</span>
+</span><span id="__span-3-38"><a id="__codelineno-3-38" name="__codelineno-3-38" href="#__codelineno-3-38"></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+</span><span id="__span-3-39"><a id="__codelineno-3-39" name="__codelineno-3-39" href="#__codelineno-3-39"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">input_keys</span> <span class="o">=</span> <span class="n">input_key</span>
+</span><span id="__span-3-40"><a id="__codelineno-3-40" name="__codelineno-3-40" href="#__codelineno-3-40"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">output_keys</span> <span class="o">=</span> <span class="n">output_key</span>
+</span><span id="__span-3-41"><a id="__codelineno-3-41" name="__codelineno-3-41" href="#__codelineno-3-41"></a>
+</span><span id="__span-3-42"><a id="__codelineno-3-42" name="__codelineno-3-42" href="#__codelineno-3-42"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">output_np</span> <span class="o">=</span> <span class="n">output_np</span>
+</span><span id="__span-3-43"><a id="__codelineno-3-43" name="__codelineno-3-43" href="#__codelineno-3-43"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">modes1</span> <span class="o">=</span> <span class="n">modes</span>
+</span><span id="__span-3-44"><a id="__codelineno-3-44" name="__codelineno-3-44" href="#__codelineno-3-44"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">width</span>
+</span><span id="__span-3-45"><a id="__codelineno-3-45" name="__codelineno-3-45" href="#__codelineno-3-45"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">padding</span> <span class="o">=</span> <span class="n">padding</span>
+</span><span id="__span-3-46"><a id="__codelineno-3-46" name="__codelineno-3-46" href="#__codelineno-3-46"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">fc0</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">input_channel</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">)</span>
+</span><span id="__span-3-47"><a id="__codelineno-3-47" name="__codelineno-3-47" href="#__codelineno-3-47"></a>
+</span><span id="__span-3-48"><a id="__codelineno-3-48" name="__codelineno-3-48" href="#__codelineno-3-48"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">conv0</span> <span class="o">=</span> <span class="n">SpectralConv1d</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">modes1</span><span class="p">)</span>
+</span><span id="__span-3-49"><a id="__codelineno-3-49" name="__codelineno-3-49" href="#__codelineno-3-49"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">conv1</span> <span class="o">=</span> <span class="n">SpectralConv1d</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">modes1</span><span class="p">)</span>
+</span><span id="__span-3-50"><a id="__codelineno-3-50" name="__codelineno-3-50" href="#__codelineno-3-50"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">conv2</span> <span class="o">=</span> <span class="n">SpectralConv1d</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">modes1</span><span class="p">)</span>
+</span><span id="__span-3-51"><a id="__codelineno-3-51" name="__codelineno-3-51" href="#__codelineno-3-51"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">conv3</span> <span class="o">=</span> <span class="n">SpectralConv1d</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">modes1</span><span class="p">)</span>
+</span><span id="__span-3-52"><a id="__codelineno-3-52" name="__codelineno-3-52" href="#__codelineno-3-52"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">conv4</span> <span class="o">=</span> <span class="n">SpectralConv1d</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">modes1</span><span class="p">)</span>
+</span><span id="__span-3-53"><a id="__codelineno-3-53" name="__codelineno-3-53" href="#__codelineno-3-53"></a>
+</span><span id="__span-3-54"><a id="__codelineno-3-54" name="__codelineno-3-54" href="#__codelineno-3-54"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">w0</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv1D</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</span><span id="__span-3-55"><a id="__codelineno-3-55" name="__codelineno-3-55" href="#__codelineno-3-55"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">w1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv1D</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</span><span id="__span-3-56"><a id="__codelineno-3-56" name="__codelineno-3-56" href="#__codelineno-3-56"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">w2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv1D</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</span><span id="__span-3-57"><a id="__codelineno-3-57" name="__codelineno-3-57" href="#__codelineno-3-57"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">w3</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv1D</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</span><span id="__span-3-58"><a id="__codelineno-3-58" name="__codelineno-3-58" href="#__codelineno-3-58"></a>
+</span><span id="__span-3-59"><a id="__codelineno-3-59" name="__codelineno-3-59" href="#__codelineno-3-59"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">fc1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="mi">128</span><span class="p">)</span>
+</span><span id="__span-3-60"><a id="__codelineno-3-60" name="__codelineno-3-60" href="#__codelineno-3-60"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">fc2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</span><span id="__span-3-61"><a id="__codelineno-3-61" name="__codelineno-3-61" href="#__codelineno-3-61"></a>
+</span><span id="__span-3-62"><a id="__codelineno-3-62" name="__codelineno-3-62" href="#__codelineno-3-62"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">_functional_pad</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">pad</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">"constant"</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">data_format</span><span class="o">=</span><span class="s2">"NCL"</span><span class="p">):</span>
+</span><span id="__span-3-63"><a id="__codelineno-3-63" name="__codelineno-3-63" href="#__codelineno-3-63"></a>        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">pad</span><span class="p">)</span> <span class="ow">and</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">"constant"</span><span class="p">:</span>
+</span><span id="__span-3-64"><a id="__codelineno-3-64" name="__codelineno-3-64" href="#__codelineno-3-64"></a>            <span class="n">pad</span> <span class="o">=</span> <span class="p">(</span>
+</span><span id="__span-3-65"><a id="__codelineno-3-65" name="__codelineno-3-65" href="#__codelineno-3-65"></a>                <span class="n">paddle</span><span class="o">.</span><span class="n">to_tensor</span><span class="p">(</span><span class="n">pad</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">"float32"</span><span class="p">)</span>
+</span><span id="__span-3-66"><a id="__codelineno-3-66" name="__codelineno-3-66" href="#__codelineno-3-66"></a>                <span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+</span><span id="__span-3-67"><a id="__codelineno-3-67" name="__codelineno-3-67" href="#__codelineno-3-67"></a>                <span class="o">.</span><span class="n">flip</span><span class="p">([</span><span class="mi">0</span><span class="p">])</span>
+</span><span id="__span-3-68"><a id="__codelineno-3-68" name="__codelineno-3-68" href="#__codelineno-3-68"></a>                <span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+</span><span id="__span-3-69"><a id="__codelineno-3-69" name="__codelineno-3-69" href="#__codelineno-3-69"></a>                <span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+</span><span id="__span-3-70"><a id="__codelineno-3-70" name="__codelineno-3-70" href="#__codelineno-3-70"></a>            <span class="p">)</span>
+</span><span id="__span-3-71"><a id="__codelineno-3-71" name="__codelineno-3-71" href="#__codelineno-3-71"></a>        <span class="k">return</span> <span class="n">F</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">pad</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">data_format</span><span class="p">)</span>
+</span><span id="__span-3-72"><a id="__codelineno-3-72" name="__codelineno-3-72" href="#__codelineno-3-72"></a>
+</span><span id="__span-3-73"><a id="__codelineno-3-73" name="__codelineno-3-73" href="#__codelineno-3-73"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+</span><span id="__span-3-74"><a id="__codelineno-3-74" name="__codelineno-3-74" href="#__codelineno-3-74"></a>        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">input_keys</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+</span><span id="__span-3-75"><a id="__codelineno-3-75" name="__codelineno-3-75" href="#__codelineno-3-75"></a>        <span class="c1"># Dict</span>
+</span><span id="__span-3-76"><a id="__codelineno-3-76" name="__codelineno-3-76" href="#__codelineno-3-76"></a>        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc0</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span><span id="__span-3-77"><a id="__codelineno-3-77" name="__codelineno-3-77" href="#__codelineno-3-77"></a>        <span class="n">x</span> <span class="o">=</span> <span class="n">paddle</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">perm</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+</span><span id="__span-3-78"><a id="__codelineno-3-78" name="__codelineno-3-78" href="#__codelineno-3-78"></a>        <span class="c1"># pad the domain if input is non-periodic</span>
+</span><span id="__span-3-79"><a id="__codelineno-3-79" name="__codelineno-3-79" href="#__codelineno-3-79"></a>        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_functional_pad</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">padding</span><span class="p">])</span>
+</span><span id="__span-3-80"><a id="__codelineno-3-80" name="__codelineno-3-80" href="#__codelineno-3-80"></a>
+</span><span id="__span-3-81"><a id="__codelineno-3-81" name="__codelineno-3-81" href="#__codelineno-3-81"></a>        <span class="n">x1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">conv0</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span><span id="__span-3-82"><a id="__codelineno-3-82" name="__codelineno-3-82" href="#__codelineno-3-82"></a>        <span class="n">x2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">w0</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span><span id="__span-3-83"><a id="__codelineno-3-83" name="__codelineno-3-83" href="#__codelineno-3-83"></a>        <span class="n">x</span> <span class="o">=</span> <span class="n">x1</span> <span class="o">+</span> <span class="n">x2</span>
+</span><span id="__span-3-84"><a id="__codelineno-3-84" name="__codelineno-3-84" href="#__codelineno-3-84"></a>        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">gelu</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">approximate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span><span id="__span-3-85"><a id="__codelineno-3-85" name="__codelineno-3-85" href="#__codelineno-3-85"></a>
+</span><span id="__span-3-86"><a id="__codelineno-3-86" name="__codelineno-3-86" href="#__codelineno-3-86"></a>        <span class="n">x1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">conv1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span><span id="__span-3-87"><a id="__codelineno-3-87" name="__codelineno-3-87" href="#__codelineno-3-87"></a>        <span class="n">x2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">w1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span><span id="__span-3-88"><a id="__codelineno-3-88" name="__codelineno-3-88" href="#__codelineno-3-88"></a>        <span class="n">x</span> <span class="o">=</span> <span class="n">x1</span> <span class="o">+</span> <span class="n">x2</span>
+</span><span id="__span-3-89"><a id="__codelineno-3-89" name="__codelineno-3-89" href="#__codelineno-3-89"></a>        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">gelu</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">approximate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span><span id="__span-3-90"><a id="__codelineno-3-90" name="__codelineno-3-90" href="#__codelineno-3-90"></a>
+</span><span id="__span-3-91"><a id="__codelineno-3-91" name="__codelineno-3-91" href="#__codelineno-3-91"></a>        <span class="n">x1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">conv2</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span><span id="__span-3-92"><a id="__codelineno-3-92" name="__codelineno-3-92" href="#__codelineno-3-92"></a>        <span class="n">x2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">w2</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span><span id="__span-3-93"><a id="__codelineno-3-93" name="__codelineno-3-93" href="#__codelineno-3-93"></a>        <span class="n">x</span> <span class="o">=</span> <span class="n">x1</span> <span class="o">+</span> <span class="n">x2</span>
+</span><span id="__span-3-94"><a id="__codelineno-3-94" name="__codelineno-3-94" href="#__codelineno-3-94"></a>        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">gelu</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">approximate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span><span id="__span-3-95"><a id="__codelineno-3-95" name="__codelineno-3-95" href="#__codelineno-3-95"></a>
+</span><span id="__span-3-96"><a id="__codelineno-3-96" name="__codelineno-3-96" href="#__codelineno-3-96"></a>        <span class="n">x1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">conv3</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span><span id="__span-3-97"><a id="__codelineno-3-97" name="__codelineno-3-97" href="#__codelineno-3-97"></a>        <span class="n">x2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">w3</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span><span id="__span-3-98"><a id="__codelineno-3-98" name="__codelineno-3-98" href="#__codelineno-3-98"></a>        <span class="n">x</span> <span class="o">=</span> <span class="n">x1</span> <span class="o">+</span> <span class="n">x2</span>
+</span><span id="__span-3-99"><a id="__codelineno-3-99" name="__codelineno-3-99" href="#__codelineno-3-99"></a>        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">gelu</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">approximate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span><span id="__span-3-100"><a id="__codelineno-3-100" name="__codelineno-3-100" href="#__codelineno-3-100"></a>
+</span><span id="__span-3-101"><a id="__codelineno-3-101" name="__codelineno-3-101" href="#__codelineno-3-101"></a>        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">:</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">padding</span><span class="p">]</span>
+</span><span id="__span-3-102"><a id="__codelineno-3-102" name="__codelineno-3-102" href="#__codelineno-3-102"></a>        <span class="n">x1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">conv4</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_np</span><span class="p">)</span>
+</span><span id="__span-3-103"><a id="__codelineno-3-103" name="__codelineno-3-103" href="#__codelineno-3-103"></a>        <span class="n">x2</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">output_np</span><span class="p">],</span> <span class="n">mode</span><span class="o">=</span><span class="s2">"linear"</span><span class="p">,</span> <span class="n">align_corners</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span id="__span-3-104"><a id="__codelineno-3-104" name="__codelineno-3-104" href="#__codelineno-3-104"></a>        <span class="n">x</span> <span class="o">=</span> <span class="n">x1</span> <span class="o">+</span> <span class="n">x2</span>
+</span><span id="__span-3-105"><a id="__codelineno-3-105" name="__codelineno-3-105" href="#__codelineno-3-105"></a>        <span class="c1"># Change the x-dimension to (batch, channel, 2001)</span>
+</span><span id="__span-3-106"><a id="__codelineno-3-106" name="__codelineno-3-106" href="#__codelineno-3-106"></a>        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">perm</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+</span><span id="__span-3-107"><a id="__codelineno-3-107" name="__codelineno-3-107" href="#__codelineno-3-107"></a>        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span><span id="__span-3-108"><a id="__codelineno-3-108" name="__codelineno-3-108" href="#__codelineno-3-108"></a>        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">gelu</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">approximate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span><span id="__span-3-109"><a id="__codelineno-3-109" name="__codelineno-3-109" href="#__codelineno-3-109"></a>        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc2</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span><span id="__span-3-110"><a id="__codelineno-3-110" name="__codelineno-3-110" href="#__codelineno-3-110"></a>
+</span><span id="__span-3-111"><a id="__codelineno-3-111" name="__codelineno-3-111" href="#__codelineno-3-111"></a>        <span class="k">return</span> <span class="p">{</span><span class="bp">self</span><span class="o">.</span><span class="n">output_keys</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span> <span class="n">x</span><span class="p">}</span>
+</span></code></pre></div>
+<p>为了在计算时，准确快速地访问具体变量的值，我们在这里指定网络模型的输入变量名是 <code>("input",)</code>，输出变量名是 <code>("output",)</code>，这些命名与后续代码保持一致。</p>
+<p>接着通过指定 FNO1d 的层数、特征通道数，神经元个数，并通过加载上文所提及的初始化权重模型，我们就实例化出了一个神经网络模型 <code>model</code>。</p>
+<h3 id="33">3.3 模型训练、评估<a class="headerlink" href="#33" title="Permanent link">¶</a></h3>
+<p>完成上述设置之后，只需要将上述实例化的对象按顺序传递给 <code>ppsci.solver.Solver</code>，然后启动训练、评估。</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># initialize solver</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">solver</span> <span class="o">=</span> <span class="n">ppsci</span><span class="o">.</span><span class="n">solver</span><span class="o">.</span><span class="n">Solver</span><span class="p">(</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="n">model</span><span class="p">,</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="n">constraint</span><span class="p">,</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    <span class="n">cfg</span><span class="o">.</span><span class="n">output_dir</span><span class="p">,</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    <span class="n">optimizer</span><span class="p">,</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>    <span class="n">epochs</span><span class="o">=</span><span class="n">cfg</span><span class="o">.</span><span class="n">TRAIN</span><span class="o">.</span><span class="n">epochs</span><span class="p">,</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>    <span class="n">iters_per_epoch</span><span class="o">=</span><span class="n">ITERS_PER_EPOCH</span><span class="p">,</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>    <span class="n">eval_with_no_grad</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>    <span class="n">eval_during_train</span><span class="o">=</span><span class="n">cfg</span><span class="o">.</span><span class="n">TRAIN</span><span class="o">.</span><span class="n">eval_during_train</span><span class="p">,</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>    <span class="n">validator</span><span class="o">=</span><span class="n">l2rel_validator</span><span class="p">,</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>    <span class="n">save_freq</span><span class="o">=</span><span class="n">cfg</span><span class="o">.</span><span class="n">TRAIN</span><span class="o">.</span><span class="n">save_freq</span><span class="p">,</span>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="p">)</span>
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="c1"># train model</span>
+</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="n">solver</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+</span></code></pre></div>
+<h2 id="4">4. 结果展示<a class="headerlink" href="#4" title="Permanent link">¶</a></h2>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked id="__tabbed_2_1" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="__tabbed_2_1">训练、推理loss</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
+<p>下方展示了训练后模型对测试数据的第一次预测结果以及最后一次预测结果。</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:3"><input checked id="__tabbed_3_1" name="__tabbed_3" type="radio"><input id="__tabbed_3_2" name="__tabbed_3" type="radio"><input id="__tabbed_3_3" name="__tabbed_3" type="radio"><div class="tabbed-labels"><label for="__tabbed_3_1">第一次预测结果</label><label for="__tabbed_3_2">最后一次预测结果</label><label for="__tabbed_3_3">训练测试损失</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><a class="glightbox" href="https://dataset.bj.bcebos.com/PaddleScience/2024%20AI-aided%20geometric%20design%20of%20anti-infection%20catheters/catheter10.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="1725427977357" src="https://dataset.bj.bcebos.com/PaddleScience/2024%20AI-aided%20geometric%20design%20of%20anti-infection%20catheters/catheter10.png"></a></p>
+</div>
+<div class="tabbed-block">
+<p><a class="glightbox" href="https://dataset.bj.bcebos.com/PaddleScience/2024%20AI-aided%20geometric%20design%20of%20anti-infection%20catheters/catheter9.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="1725428017615" src="https://dataset.bj.bcebos.com/PaddleScience/2024%20AI-aided%20geometric%20design%20of%20anti-infection%20catheters/catheter9.png"></a></p>
+</div>
+<div class="tabbed-block">
+<p><a class="glightbox" href="https://dataset.bj.bcebos.com/PaddleScience/2024%20AI-aided%20geometric%20design%20of%20anti-infection%20catheters/catheter8.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="1725894134717" src="https://dataset.bj.bcebos.com/PaddleScience/2024%20AI-aided%20geometric%20design%20of%20anti-infection%20catheters/catheter8.png"></a></p>
+</div>
+</div>
+</div>
+<p>可以看到模型预测结果与真实结果基本一致，优化后的导管具有特定的几何形状，如障碍物分布和间距等，这些形状特征能够显著影响流体动力学相互作用，从而抑制细菌的上游游泳行为。</p>
+<h2 id="6">6. 参考<a class="headerlink" href="#6" title="Permanent link">¶</a></h2>
+<p>参考代码： /zongyi-li/Geo-FNO-catheter</p>
+<p>参考文献列表</p>
+<ol>
+<li>J. W. Warren, the catheter and urinary tract infection. Med. Clin. North Am. 75, 481–493
+(1991).</li>
+<li>l. e. nicolle, catheter- related urinary tract infection. Drugs Aging 22, 627–639 (2005).</li>
+<li>e. K. Shuman, c. e. chenoweth, Urinary catheter- associated infections. Infect. Dis. Clin.
+North Am. 32, 885–897 (2018).</li>
+<li>n. Buetti, A. tabah, J. F. timsit, W. Zingg, What is new in catheter use and catheter
+infection prevention in the icU. Curr. Opin. Crit. Care 26, 459–465 (2020).</li>
+<li>l. chuang, P. A. tambyah, catheter-associated urinary tract infection. J. Infect. Chemother.
+27, 1400–1406 (2021).</li>
+<li>e. Zimlichman, d. henderson, O. tamir, c. Franz, P. Song, c. K. Yamin, c. Keohane,
+c. R. denham, d. W. Bates, health care–associated infections. JAMA Intern. Med. 173,
+2039–2046 (2013).</li>
+<li>U. Samuel, J. Guggenbichler, Prevention of catheter-related infections: the potential of a
+new nano-silver impregnated catheter. Int. J. Antimicrob. Agents 23, 75–78 (2004).</li>
+<li>W. Kohnen, B. Jansen, Polymer materials for the prevention of catheter-related infections.
+Zentralbl. Bakteriol. 283, 175–186 (1995).</li>
+<li>A. hameed, F. chinegwundoh, A. thwaini, Prevention of catheter-related urinary tract
+infections. Med. Hypotheses 71, 148–152 (2010).</li>
+<li>h. c. Berg, d. A. Brown, chemotaxis in Escherichia coli analysed by three-dimensional
+tracking. Nature 239, 500–504 (1972).</li>
+<li>h. c. Berg, the rotary motor of bacterial flagella. Annu. Rev. Biochem. 72, 19–54 (2003).</li>
+<li>h. c. Berg, E. coli in Motion (Springer, 2004).</li>
+<li>M. Polin, i. tuval, K. drescher, J. P. Gollub, R. e. Goldstein, chlamydomonas swims with two
+“gears” in a eukaryotic version of run-and- tumble locomotion. Science 325, 487–490
+(2009).</li>
+<li>A. P. Berke, l. turner, h. c. Berg, e. lauga, hydrodynamic attraction of swimming
+microorganisms by surfaces. Phys. Rev. Lett. 101, 038102 (2008).</li>
+<li>e. lauga, t. R. Powers, the hydrodynamics of swimming microorganisms. Rep. Prog. Phys.
+72, 096601 (2009).</li>
+<li>d. Kaiser, Bacterial swarming: A re-examination of cell-movement patterns. Curr. Biol. 17,
+R561–R570 (2007).</li>
+<li>n. verstraeten, K. Braeken, B. debkumari, M. Fauvart, J. Fransaer, J. vermant, J. Michiels,
+living on a surface: Swarming and biofilm formation. Trends Microbiol. 16, 496–506
+(2008).</li>
+<li>d. B. Kearns, A field guide to bacterial swarming motility. Nat. Rev. Microbiol. 8, 634–644
+(2010).</li>
+<li>d. Ghosh, X. cheng, to cross or not to cross: collective swimming of Escherichia coli under
+two-dimensional confinement. Phys. Rev. Res. 4, 023105 (2022).</li>
+<li>J. hill, O. Kalkanci, J. l. McMurry, h. Koser, hydrodynamic surface interactions enable
+Escherichia coli to seek efficient routes to swim upstream. Phys. Rev. Lett. 98, 068101 (2007).</li>
+<li>t. Kaya, h. Koser, direct upstream motility in Escherichia coli. Biophys. J. 102, 1514–1523
+(2012).</li>
+<li>Marcos, h. c. Fu, t. R. Powers, R. Stocker, Bacterial rheotaxis. Proc. Natl. Acad. Sci. U.S.A.
+109, 4780–4785 (2012).</li>
+<li>Y. Shen, A. Siryaporn, S. lecuyer, Z. Gitai, h. A. Stone, Flow directs surface-attached
+bacteria to twitch upstream. Biophys. J. 103, 146–151 (2012).</li>
+<li>A. Zöttl, h. Stark, nonlinear dynamics of a microswimmer in Poiseuille flow. Phys. Rev. Lett.
+108, 218104 (2012).</li>
+<li>c.-K. tung, F. Ardon, A. Roy, d. l. Koch, S. S. Suarez, M. Wu, emergence of upstream
+swimming via a hydrodynamic transition. Phys. Rev. Lett. 114, 108102 (2015).</li>
+<li>A. J. Mathijssen, t. n. Shendruk, J. M. Yeomans, A. doostmohammadi, Upstream
+swimming in microbiological flows. Phys. Rev. Lett. 116, 028104 (2016).</li>
+<li>Z. Peng, J. F. Brady, Upstream swimming and taylor dispersion of active Brownian
+particles. Phys. Rev. Fluids 5, 073102 (2020).</li>
+<li>G. i. taylor, dispersion of soluble matter in solvent flowing slowly through a tube.
+Proc. R. Soc. A-Math. Phys. Eng. Sci. 219, 186–203 (1953).</li>
+<li>t. Kaya, h. Koser, characterization of hydrodynamic surface interactions of Escherichia coli
+cell bodies in shear flow. Phys. Rev. Lett. 103, 138103 (2009).</li>
+<li>v. Kantsler, J. dunkel, M. Blayney, R. e. Goldstein, Rheotaxis facilitates upstream
+navigation of mammalian sperm cells. eLife 3, e02403 (2014).</li>
+<li>t. Omori, t. ishikawa, Upward swimming of a sperm cell in shear flow. Phys. Rev. E. 93,
+032402 (2016).</li>
+<li>n. Figueroa-Morales, A. Rivera, R. Soto, A. lindner, e. Altshuler, É. clément, E. coli
+“super-contaminates” narrow ducts fostered by broad run-time distribution. Sci. Adv. 6,
+eaay0155 (2020).</li>
+<li>B. e. logan, t. A. hilbert, R. G. Arnold, Removal of bacteria in laboratory filters: Models and
+experiments. Water Res. 27, 955–962 (1993).</li>
+<li>W. dzik, Use of leukodepletion filters for the removal of bacteria. Immunol. Invest. 24,
+95–115 (1995).</li>
+<li>l. Fernandez Garcia, S. Alvarez Blanco, F. A. Riera Rodriguez, Microfiltration applied to
+dairy streams: Removal of bacteria. J. Sci. Food Agric. 93, 187–196 (2013).</li>
+<li>G. Franci, A. Falanga, S. Galdiero, l. Palomba, M. Rai, G. Morelli, M. Galdiero, Silver
+nanoparticles as potential antibacterial agents. Molecules 20, 8856–8874 (2015).</li>
+<li>M. i. hutchings, A. W. truman, B. Wilkinson, Antibiotics: Past, present and future. Curr.
+Opin. Microbiol. 51, 72–80 (2019).</li>
+<li>J. W. costerton, h. M. lappin-Scott, introduction to microbial biofilms, in Microbial Biofilms,
+h. M. lappin-Scott, J. W. costerton, eds. (cambridge Univ. Press, 1995), pp. 1–11.</li>
+<li>W.- h. Sheng, W.-J. Ko, J.-t. Wang, S.-c. chang, P.-R. hsueh, K.-t. luh, evaluation of
+antiseptic-impregnated central venous catheters for prevention of catheter-related
+infection in intensive care unit patients. Diagn. Microbiol. Infect. Dis. 38, 1–5 (2000).</li>
+<li>W. M. dunne Jr., Bacterial adhesion: Seen any good biofilms lately? Clin. Microbiol. Rev. 15,
+155–166 (2002).</li>
+<li>R. P. Allaker, the use of nanoparticles to control oral biofilm formation. J. Dent. Res. 89,
+1175–1186 (2010).</li>
+<li>M. l. Knetsch, l. h. Koole, new strategies in the development of antimicrobial coatings:
+the example of increasing usage of silver and silver nanoparticles. Polymers 3, 340–366
+(2011).</li>
+<li>M. Birkett, l. dover, c. cherian lukose, A. Wasy Zia, M. M. tambuwala, Á. Serrano-Aroca,
+Recent advances in metal-based antimicrobial coatings for high-touch surfaces. Int. J.
+Mol. Sci. 23, 1162 (2022).</li>
+<li>J. R. lex, R. Koucheki, n. A. Stavropoulos, J. di Michele, J. S. toor, K. tsoi, P. c. Ferguson,
+R. e. turcotte, P. J. Papagelopoulos, Megaprosthesis anti-bacterial coatings: A
+comprehensive translational review. Acta Biomater. 140, 136–148 (2022).</li>
+<li>J. Monod, the growth of bacterial cultures. Annu. Rev. Microbiol. 3, 371–394 (1949).</li>
+<li>M. hecker, W. Schumann, U. völker, heat-shock and general stress response in Bacillus
+subtilis. Mol. Microbiol. 19, 417–428 (1996).</li>
+<li>P. Setlow, Spores of Bacillus subtilis: their resistance to and killing by radiation, heat and
+chemicals. J. Appl. Microbiol. 101, 514–525 (2006).</li>
+<li>M. Falagas, P. thomaidis, i. Kotsantis, K. Sgouros, G. Samonis, d. Karageorgopoulos,
+Airborne hydrogen peroxide for disinfection of the hospital environment and infection
+control: A systematic review. J. Hosp. Infect. 78, 171–177 (2011).</li>
+<li>W. A. Rutala, d. J. Weber, disinfection and sterilization in health care facilities: What
+clinicians need to know. Clin. Infect. Dis. 39, 702–709 (2004).</li>
+<li>W. A. Rutala, d. J. Weber, disinfection and sterilization: An overview. Am. J. Infect. Control
+41, S2–S5 (2013).</li>
+<li>n. P. tipnis, d. J. Burgess, Sterilization of implantable polymer-based medical devices: A
+review. Int. J. Pharm. 544, 455–460 (2018).</li>
+<li>M. Berger, R. Shiau, J. M. Weintraub, Review of syndromic surveillance: implications for
+waterborne disease detection. J. Epidemiol. Community Health 60, 543–550 (2006).</li>
+<li>M. v. Storey, B. van der Gaag, B. P. Burns, Advances in on-line drinking water quality
+monitoring and early warning systems. Water Res. 45, 741–747 (2011).</li>
+<li>S. hyllestad, e. Amato, K. nygård, l. vold, P. Aavitsland, the effectiveness of syndromic
+surveillance for the early detection of waterborne outbreaks: A systematic review.
+BMC Infect. Dis. 21, 696 (2021).</li>
+<li>F. Baquero, J.- l. Martínez, R. cantón, Antibiotics and antibiotic resistance in water
+environments. Curr. Opin. Biotechnol. 19, 260–265 (2008).</li>
+<li>R. i. Aminov, the role of antibiotics and antibiotic resistance in nature. Environ. Microbiol.
+11, 2970–2988 (2009).</li>
+<li>J. M. Munita, c. A. Arias, Mechanisms of antibiotic resistance. Microbiol Spectr, (2016).</li>
+<li>U. theuretzbacher, K. Bush, S. harbarth, M. Paul, J. h. Rex, e. tacconelli, G. e. thwaites,
+critical analysis of antibacterial agents in clinical development. Nat. Rev. Microbiol. 18,
+286–298 (2020).</li>
+<li>R. di Giacomo, S. Krödel, B. Maresca, P. Benzoni, R. Rusconi, R. Stocker, c. daraio,
+deployable micro- traps to sequester motile bacteria. Sci. Rep. 7, 45897 (2017).</li>
+<li>P. Galajda, J. Keymer, P. chaikin, R. Austin, A wall of funnels concentrates swimming
+bacteria. J. Bacteriol. 189, 8704–8707 (2007).</li>
+<li>c. M. Kjeldbjerg, J. F. Brady, theory for the casimir effect and the partitioning of active
+matter. Soft Matter 17, 523–530 (2021).</li>
+<li>Z. li, n. Kovachki, K. Azizzadenesheli, B. liu, K. Bhattacharya, A. Stuart, A. Anandkumar.
+Fourier neural operator for parametric partial differential equations. arXiv:2010.08895
+[cs.lG] (2020).</li>
+<li>Z. li, d. Z. huang, B. liu, A. Anandkumar. Fourier neural operator with learned
+deformations for pdes on general geometries. arXiv:2207.05209 [cs.lG] (2022).</li>
+<li>A. J. Mathijssen, n. Figueroa-Morales, G. Junot, É. clément, A. lindner, A. Zöttl, Oscillatory
+surface rheotaxis of swimming E. coli bacteria. Nat. Commun. 10, 3434 (2019).</li>
+<li>S. B. Goodman, Z. Yao, M. Keeney, F. Yang, the future of biologic coatings for orthopaedic
+implants. Biomaterials 34, 3174–3183 (2013).</li>
+<li>A. Jaggessar, h. Shahali, A. Mathew, P. K. Yarlagadda, Bio-mimicking nano and
+micro-structured surface fabrication for antibacterial properties in medical implants.
+J. Nanobiotechnol. 15, 64 (2017).</li>
+<li>e. Macedo, R. Malhotra, R. claure- del Granado, P. Fedullo, R. l. Mehta, defining urine
+output criterion for acute kidney injury in critically ill patients. Nephrol Dial Transplant 26,
+509–515 (2011).</li>
+<li>K. B. chenitz, M. B. lane-Fall, decreased urine output and acute kidney injury in the
+postanesthesia care unit. Anesthesiol. Clin. 30, 513–526 (2012).</li>
+<li>J. A. Kellum, F. e. Sileanu, R. Murugan, n. lucko, A. d. Shaw, G. clermont, classifying AKi by
+urine output versus serum creatinine level. J. Am. Soc. Nephrol. 26, 2231–2238 (2015).</li>
+<li>S. Mirjalili, Genetic algorithm, in Evolutionary Algorithms and Neural Networks: Theory and
+Applications (Springer, 2019), pp. 43–55.</li>
+<li>S. Ruder, An overview of gradient descent optimization algorithms. arXiv:1609.04747
+[cs.lG] (2016).</li>
+<li>c. Multiphysics, introduction to cOMSOl multiphysics. cOMSOl Multiphysics, Burlington,
+MA, accessed 2018 Feb 9: 32 (1998).</li>
+<li>G. B. Jeffery, the motion of ellipsoidal particles immersed in a viscous fluid. Proc. R. soc. Lond.
+Ser. A-Contain. Pap. Math. Phys. Character 102, 161–179 (1922).</li>
+<li>F. P. Bretherton, the motion of rigid particles in a shear flow at low Reynolds number.
+J. Fluid Mech. 14, 284–304 (1962).</li>
+<li>t. Zhou, Z. Peng, M. Gulian, J. F. Brady, distribution and pressure of active lévy swimmers
+under confinement. J. Phys. A Math. Theor. 54, 275002 (2021).</li>
+<li>P. i. Frazier, J. Wang, Bayesian optimization for materials design, in Information Science for
+Materials Discovery and Design (Springer, 2016), pp. 45–75.</li>
+<li>Y. Zhang, d. W. Apley, W. chen, Bayesian optimization for materials design with mixed
+quantitative and qualitative variables. Sci. Rep. 10, 4924 (2020).</li>
+<li>J. Schindelin, i. Arganda-carreras, e. Frise, v. Kaynig, M. longair, t. Pietzsch, S. Preibisch,
+c. Rueden, S. Saalfeld, B. Schmid, Fiji: An open-source platform for biological-image
+analysis. Nat. Methods 9, 676–682 (2012).</li>
+<li>d. ershov, M.-S. Phan, J. W. Pylvänäinen, S. U. Rigaud, l. le Blanc, A. charles- Orszag,
+J. R. conway, R. F. laine, n. h. Roy, d. Bonazzi, Bringing trackMate into the era of
+machine-learning and deep-learning. bioRxiv 458852 [Preprint] (2021). https://doi.
+org/10.1101/2021.09.03.458852.</li>
+</ol></div>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2024年12月31日 03:07:46">2024年12月31日</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="创建日期">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2024年12月31日 03:07:46">2024年12月31日</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2022 - 2023 PaddlePaddle
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.tracking", "navigation.sections", "navigation.top", "search.suggest", "navigation.instant", "content.code.copy", "content.code.select", "content.code.annotate", "search.highlight", "content.tabs.link", "content.action.edit", "content.action.view", "content.tooltips"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": {"alias": true, "provider": "mike"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="../../../javascripts/bd_statistics.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="../../../javascripts/contributors.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

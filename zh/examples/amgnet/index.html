@@ -15,14 +15,14 @@
         <link rel="canonical" href="https://github.com/PaddlePaddle/PaddleScience/zh/examples/amgnet/">
       
       
-        <link rel="prev" href="../transformer4sr/">
+        <link rel="prev" href="../catheter/">
       
       
         <link rel="next" href="../aneurysm/">
       
       
       <link rel="icon" href="../../../images/icons/favcion.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.9">
     
     
       
@@ -30,7 +30,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.6f8fc17f.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.4af4bdda.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
@@ -41,7 +41,7 @@
   
   
   
-  <style>:root{--md-annotation-icon:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M256 512a256 256 0 1 0 0-512 256 256 0 1 0 0 512m-86.2-346.7c7.9-22.3 29.1-37.3 52.8-37.3h58.3c34.9 0 63.1 28.3 63.1 63.1 0 22.6-12.1 43.5-31.7 54.8L280 264.4c-.2 13-10.9 23.6-24 23.6-13.3 0-24-10.7-24-24v-13.5c0-8.6 4.6-16.5 12.1-20.8l44.3-25.4c4.7-2.7 7.6-7.7 7.6-13.1 0-8.4-6.8-15.1-15.1-15.1h-58.3c-3.4 0-6.4 2.1-7.5 5.3l-.4 1.2c-4.4 12.5-18.2 19-30.6 14.6s-19-18.2-14.6-30.6l.4-1.2zM224 352a32 32 0 1 1 64 0 32 32 0 1 1-64 0"/></svg>');}</style>
+  <style>:root{--md-annotation-icon:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20512%20512%22%3E%3C%21--%21%20Font%20Awesome%20Free%206.7.2%20by%20%40fontawesome%20-%20https%3A//fontawesome.com%20License%20-%20https%3A//fontawesome.com/license/free%20%28Icons%3A%20CC%20BY%204.0%2C%20Fonts%3A%20SIL%20OFL%201.1%2C%20Code%3A%20MIT%20License%29%20Copyright%202024%20Fonticons%2C%20Inc.--%3E%3Cpath%20d%3D%22M256%20512a256%20256%200%201%200%200-512%20256%20256%200%201%200%200%20512m-86.2-346.7c7.9-22.3%2029.1-37.3%2052.8-37.3h58.3c34.9%200%2063.1%2028.3%2063.1%2063.1%200%2022.6-12.1%2043.5-31.7%2054.8L280%20264.4c-.2%2013-10.9%2023.6-24%2023.6-13.3%200-24-10.7-24-24v-13.5c0-8.6%204.6-16.5%2012.1-20.8l44.3-25.4c4.7-2.7%207.6-7.7%207.6-13.1%200-8.4-6.8-15.1-15.1-15.1h-58.3c-3.4%200-6.4%202.1-7.5%205.3l-.4%201.2c-4.4%2012.5-18.2%2019-30.6%2014.6s-19-18.2-14.6-30.6l.4-1.2zM224%20352a32%2032%200%201%201%2064%200%2032%2032%200%201%201-64%200%22/%3E%3C/svg%3E');}</style>
 
 
     
@@ -244,7 +244,7 @@
         <a href="https://github.com/PaddlePaddle/PaddleScience" title="前往仓库" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
   </div>
   <div class="md-source__repository">
     PaddleScience
@@ -490,7 +490,7 @@
       <a href="https://github.com/PaddlePaddle/PaddleScience" title="前往仓库" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
   </div>
   <div class="md-source__repository">
     PaddleScience
@@ -527,6 +527,7 @@
   
   <span class="md-ellipsis">
     PaddleScience
+    
   </span>
   
 
@@ -552,6 +553,7 @@
   
   <span class="md-ellipsis">
     主页
+    
   </span>
   
 
@@ -573,6 +575,7 @@
   
   <span class="md-ellipsis">
     功能介绍
+    
   </span>
   
 
@@ -594,6 +597,7 @@
   
   <span class="md-ellipsis">
     安装使用
+    
   </span>
   
 
@@ -615,6 +619,7 @@
   
   <span class="md-ellipsis">
     快速开始
+    
   </span>
   
 
@@ -636,6 +641,7 @@
   
   <span class="md-ellipsis">
     学习资料
+    
   </span>
   
 
@@ -684,6 +690,7 @@
   
   <span class="md-ellipsis">
     经典案例
+    
   </span>
   
 
@@ -729,6 +736,7 @@
   
   <span class="md-ellipsis">
      
+    
   </span>
   
 
@@ -769,6 +777,7 @@
   
   <span class="md-ellipsis">
     数学(AI for Math)
+    
   </span>
   
 
@@ -794,6 +803,7 @@
   
   <span class="md-ellipsis">
     AllenCahn
+    
   </span>
   
 
@@ -815,6 +825,7 @@
   
   <span class="md-ellipsis">
     DeepHPMs
+    
   </span>
   
 
@@ -836,6 +847,7 @@
   
   <span class="md-ellipsis">
     DeepONet
+    
   </span>
   
 
@@ -857,6 +869,7 @@
   
   <span class="md-ellipsis">
     Euler_Beam
+    
   </span>
   
 
@@ -878,6 +891,7 @@
   
   <span class="md-ellipsis">
     Laplace2D
+    
   </span>
   
 
@@ -899,6 +913,7 @@
   
   <span class="md-ellipsis">
     Lorenz_transform_physx
+    
   </span>
   
 
@@ -920,6 +935,7 @@
   
   <span class="md-ellipsis">
     PIRBN
+    
   </span>
   
 
@@ -941,6 +957,7 @@
   
   <span class="md-ellipsis">
     Rossler_transform_physx
+    
   </span>
   
 
@@ -962,6 +979,7 @@
   
   <span class="md-ellipsis">
     Volterra_IDE
+    
   </span>
   
 
@@ -983,6 +1001,7 @@
   
   <span class="md-ellipsis">
     NLSMB
+    
   </span>
   
 
@@ -1004,6 +1023,7 @@
   
   <span class="md-ellipsis">
     SPINN
+    
   </span>
   
 
@@ -1025,6 +1045,7 @@
   
   <span class="md-ellipsis">
     XPINN
+    
   </span>
   
 
@@ -1046,6 +1067,7 @@
   
   <span class="md-ellipsis">
     NeuralOperator
+    
   </span>
   
 
@@ -1067,6 +1089,7 @@
   
   <span class="md-ellipsis">
     Brusselator3D
+    
   </span>
   
 
@@ -1088,6 +1111,7 @@
   
   <span class="md-ellipsis">
     Transformer4SR
+    
   </span>
   
 
@@ -1134,6 +1158,7 @@
   
   <span class="md-ellipsis">
     技术科学(AI for Technology)
+    
   </span>
   
 
@@ -1176,6 +1201,7 @@
   
   <span class="md-ellipsis">
     流体
+    
   </span>
   
 
@@ -1188,6 +1214,28 @@
             流体
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../catheter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Catheter
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -1210,6 +1258,7 @@
   
   <span class="md-ellipsis">
     AMGNet
+    
   </span>
   
 
@@ -1221,6 +1270,7 @@
   
   <span class="md-ellipsis">
     AMGNet
+    
   </span>
   
 
@@ -1394,6 +1444,7 @@
   
   <span class="md-ellipsis">
     Aneurysm
+    
   </span>
   
 
@@ -1415,6 +1466,7 @@
   
   <span class="md-ellipsis">
     BubbleNet
+    
   </span>
   
 
@@ -1436,6 +1488,7 @@
   
   <span class="md-ellipsis">
     CFDGCN
+    
   </span>
   
 
@@ -1457,6 +1510,7 @@
   
   <span class="md-ellipsis">
     CVit(Advection)
+    
   </span>
   
 
@@ -1478,6 +1532,7 @@
   
   <span class="md-ellipsis">
     CVit(NS)
+    
   </span>
   
 
@@ -1499,6 +1554,7 @@
   
   <span class="md-ellipsis">
     Cylinder2D_unsteady
+    
   </span>
   
 
@@ -1520,6 +1576,7 @@
   
   <span class="md-ellipsis">
     Cylinder2D_unsteady_transform_physx
+    
   </span>
   
 
@@ -1541,6 +1598,7 @@
   
   <span class="md-ellipsis">
     Darcy2D
+    
   </span>
   
 
@@ -1562,6 +1620,7 @@
   
   <span class="md-ellipsis">
     DeepCFD
+    
   </span>
   
 
@@ -1583,6 +1642,7 @@
   
   <span class="md-ellipsis">
     LDC2D_steady
+    
   </span>
   
 
@@ -1604,6 +1664,7 @@
   
   <span class="md-ellipsis">
     LDC2D_unsteady
+    
   </span>
   
 
@@ -1625,6 +1686,7 @@
   
   <span class="md-ellipsis">
     Labelfree_DNN_surrogate
+    
   </span>
   
 
@@ -1646,6 +1708,7 @@
   
   <span class="md-ellipsis">
     NSFNets
+    
   </span>
   
 
@@ -1667,6 +1730,7 @@
   
   <span class="md-ellipsis">
     PhyCRNet
+    
   </span>
   
 
@@ -1688,6 +1752,7 @@
   
   <span class="md-ellipsis">
     ShockWave
+    
   </span>
   
 
@@ -1709,6 +1774,7 @@
   
   <span class="md-ellipsis">
     tempoGAN
+    
   </span>
   
 
@@ -1730,6 +1796,7 @@
   
   <span class="md-ellipsis">
     NSFNet4
+    
   </span>
   
 
@@ -1751,6 +1818,7 @@
   
   <span class="md-ellipsis">
     ViV
+    
   </span>
   
 
@@ -1795,6 +1863,7 @@
   
   <span class="md-ellipsis">
     结构
+    
   </span>
   
 
@@ -1820,6 +1889,7 @@
   
   <span class="md-ellipsis">
     Biharmonic2D
+    
   </span>
   
 
@@ -1841,6 +1911,7 @@
   
   <span class="md-ellipsis">
     Bracket
+    
   </span>
   
 
@@ -1862,6 +1933,7 @@
   
   <span class="md-ellipsis">
     Control_arm
+    
   </span>
   
 
@@ -1883,6 +1955,7 @@
   
   <span class="md-ellipsis">
     EPNN
+    
   </span>
   
 
@@ -1904,6 +1977,7 @@
   
   <span class="md-ellipsis">
     Phy-LSTM
+    
   </span>
   
 
@@ -1925,6 +1999,7 @@
   
   <span class="md-ellipsis">
     TopOpt
+    
   </span>
   
 
@@ -1946,6 +2021,7 @@
   
   <span class="md-ellipsis">
     Heart
+    
   </span>
   
 
@@ -1990,6 +2066,7 @@
   
   <span class="md-ellipsis">
     传热
+    
   </span>
   
 
@@ -2015,6 +2092,7 @@
   
   <span class="md-ellipsis">
     Heat_Exchanger
+    
   </span>
   
 
@@ -2036,6 +2114,7 @@
   
   <span class="md-ellipsis">
     Heat_PINN
+    
   </span>
   
 
@@ -2057,6 +2136,7 @@
   
   <span class="md-ellipsis">
     PhyGeoNet
+    
   </span>
   
 
@@ -2078,6 +2158,7 @@
   
   <span class="md-ellipsis">
     Chip_heat
+    
   </span>
   
 
@@ -2130,6 +2211,7 @@
   
   <span class="md-ellipsis">
     材料科学(AI for Material)
+    
   </span>
   
 
@@ -2155,6 +2237,7 @@
   
   <span class="md-ellipsis">
     hPINNs
+    
   </span>
   
 
@@ -2176,6 +2259,29 @@
   
   <span class="md-ellipsis">
     CGCNN
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../perovskite_solar_cells_nn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ANN
+    
   </span>
   
 
@@ -2220,6 +2326,7 @@
   
   <span class="md-ellipsis">
     地球科学(AI for Earth Science)
+    
   </span>
   
 
@@ -2245,6 +2352,7 @@
   
   <span class="md-ellipsis">
     Extformer-MoE
+    
   </span>
   
 
@@ -2266,6 +2374,7 @@
   
   <span class="md-ellipsis">
     FourCastNet
+    
   </span>
   
 
@@ -2287,6 +2396,7 @@
   
   <span class="md-ellipsis">
     NowcastNet
+    
   </span>
   
 
@@ -2308,6 +2418,7 @@
   
   <span class="md-ellipsis">
     DGMR
+    
   </span>
   
 
@@ -2329,6 +2440,7 @@
   
   <span class="md-ellipsis">
     EarthFormer
+    
   </span>
   
 
@@ -2350,6 +2462,7 @@
   
   <span class="md-ellipsis">
     GraphCast
+    
   </span>
   
 
@@ -2371,6 +2484,7 @@
   
   <span class="md-ellipsis">
     VelocityGAN
+    
   </span>
   
 
@@ -2392,6 +2506,7 @@
   
   <span class="md-ellipsis">
     TGCN
+    
   </span>
   
 
@@ -2436,6 +2551,7 @@
   
   <span class="md-ellipsis">
     化学科学(AI for Chemistry)
+    
   </span>
   
 
@@ -2461,6 +2577,7 @@
   
   <span class="md-ellipsis">
     Moflow
+    
   </span>
   
 
@@ -2520,6 +2637,7 @@
   
   <span class="md-ellipsis">
     API 文档
+    
   </span>
   
 
@@ -2560,6 +2678,7 @@
   
   <span class="md-ellipsis">
     ppsci
+    
   </span>
   
 
@@ -2585,6 +2704,7 @@
   
   <span class="md-ellipsis">
     ppsci.arch
+    
   </span>
   
 
@@ -2606,6 +2726,7 @@
   
   <span class="md-ellipsis">
     ppsci.autodiff
+    
   </span>
   
 
@@ -2627,6 +2748,7 @@
   
   <span class="md-ellipsis">
     ppsci.constraint
+    
   </span>
   
 
@@ -2663,6 +2785,7 @@
   
   <span class="md-ellipsis">
     ppsci.data
+    
   </span>
   
 
@@ -2688,6 +2811,7 @@
   
   <span class="md-ellipsis">
     ppsci.data.dataset
+    
   </span>
   
 
@@ -2709,6 +2833,7 @@
   
   <span class="md-ellipsis">
     ppsci.data.transform
+    
   </span>
   
 
@@ -2730,6 +2855,7 @@
   
   <span class="md-ellipsis">
     ppsci.data.batch_transform
+    
   </span>
   
 
@@ -2759,6 +2885,7 @@
   
   <span class="md-ellipsis">
     ppsci.equation
+    
   </span>
   
 
@@ -2780,6 +2907,7 @@
   
   <span class="md-ellipsis">
     ppsci.geometry
+    
   </span>
   
 
@@ -2816,6 +2944,7 @@
   
   <span class="md-ellipsis">
     ppsci.loss
+    
   </span>
   
 
@@ -2841,6 +2970,7 @@
   
   <span class="md-ellipsis">
     ppsci.loss.loss
+    
   </span>
   
 
@@ -2862,6 +2992,7 @@
   
   <span class="md-ellipsis">
     ppsci.loss.mtl
+    
   </span>
   
 
@@ -2891,6 +3022,7 @@
   
   <span class="md-ellipsis">
     ppsci.metric
+    
   </span>
   
 
@@ -2927,6 +3059,7 @@
   
   <span class="md-ellipsis">
     ppsci.optimizer
+    
   </span>
   
 
@@ -2952,6 +3085,7 @@
   
   <span class="md-ellipsis">
     ppsci.optimizer.optimizer
+    
   </span>
   
 
@@ -2973,6 +3107,7 @@
   
   <span class="md-ellipsis">
     ppsci.optimizer.lr_scheduler
+    
   </span>
   
 
@@ -3002,6 +3137,7 @@
   
   <span class="md-ellipsis">
     ppsci.solver
+    
   </span>
   
 
@@ -3038,6 +3174,7 @@
   
   <span class="md-ellipsis">
     ppsci.utils
+    
   </span>
   
 
@@ -3063,6 +3200,7 @@
   
   <span class="md-ellipsis">
     ppsci.utils.checker
+    
   </span>
   
 
@@ -3084,6 +3222,7 @@
   
   <span class="md-ellipsis">
     ppsci.utils.expression
+    
   </span>
   
 
@@ -3105,6 +3244,7 @@
   
   <span class="md-ellipsis">
     ppsci.utils.initializer
+    
   </span>
   
 
@@ -3126,6 +3266,7 @@
   
   <span class="md-ellipsis">
     ppsci.utils.logger
+    
   </span>
   
 
@@ -3147,6 +3288,7 @@
   
   <span class="md-ellipsis">
     ppsci.utils.misc
+    
   </span>
   
 
@@ -3168,6 +3310,7 @@
   
   <span class="md-ellipsis">
     ppsci.utils.ema
+    
   </span>
   
 
@@ -3189,6 +3332,7 @@
   
   <span class="md-ellipsis">
     ppsci.utils.reader
+    
   </span>
   
 
@@ -3210,6 +3354,7 @@
   
   <span class="md-ellipsis">
     ppsci.utils.writer
+    
   </span>
   
 
@@ -3231,6 +3376,7 @@
   
   <span class="md-ellipsis">
     ppsci.utils.save_load
+    
   </span>
   
 
@@ -3252,6 +3398,7 @@
   
   <span class="md-ellipsis">
     ppsci.utils.symbolic
+    
   </span>
   
 
@@ -3281,6 +3428,7 @@
   
   <span class="md-ellipsis">
     ppsci.validate
+    
   </span>
   
 
@@ -3302,6 +3450,7 @@
   
   <span class="md-ellipsis">
     ppsci.visualize
+    
   </span>
   
 
@@ -3323,6 +3472,7 @@
   
   <span class="md-ellipsis">
     ppsci.experimental
+    
   </span>
   
 
@@ -3344,6 +3494,7 @@
   
   <span class="md-ellipsis">
     ppsci.probability
+    
   </span>
   
 
@@ -3388,6 +3539,7 @@
   
   <span class="md-ellipsis">
     deploy
+    
   </span>
   
 
@@ -3413,6 +3565,7 @@
   
   <span class="md-ellipsis">
     deploy.python_infer
+    
   </span>
   
 
@@ -3449,6 +3602,7 @@
   
   <span class="md-ellipsis">
     使用指南
+    
   </span>
   
 
@@ -3484,6 +3638,7 @@
   
   <span class="md-ellipsis">
     开发与复现指南
+    
   </span>
   
 
@@ -3509,6 +3664,7 @@
   
   <span class="md-ellipsis">
     开发指南
+    
   </span>
   
 
@@ -3530,6 +3686,7 @@
   
   <span class="md-ellipsis">
     复现指南
+    
   </span>
   
 
@@ -3558,6 +3715,7 @@
   
   <span class="md-ellipsis">
     学术成果
+    
   </span>
   
 
@@ -3578,6 +3736,7 @@
   
   <span class="md-ellipsis">
     技术稿件
+    
   </span>
   
 
@@ -3598,6 +3757,7 @@
   
   <span class="md-ellipsis">
     共创计划
+    
   </span>
   
 
@@ -3618,6 +3778,7 @@
   
   <span class="md-ellipsis">
     实训社区
+    
   </span>
   
 
@@ -3797,6 +3958,7 @@
               <article class="md-content__inner md-typeset">
                 
                   
+
 
   
     <a href="https://github.com/PaddlePaddle/PaddleScience/edit/develop/docs/zh/examples/amgnet.md" title="编辑此页" class="md-content__button md-icon">
@@ -3982,7 +4144,7 @@
 <span class="normal"><a href="#__codelineno-9-37">37</a></span>
 <span class="normal"><a href="#__codelineno-9-38">38</a></span>
 <span class="normal"><a href="#__codelineno-9-39">39</a></span>
-<span class="normal"><a href="#__codelineno-9-40">40</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-35"><a id="__codelineno-9-35" name="__codelineno-9-35"></a><span class="k">def</span> <span class="nf">train_mse_func</span><span class="p">(</span>
+<span class="normal"><a href="#__codelineno-9-40">40</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-35"><a id="__codelineno-9-35" name="__codelineno-9-35"></a><span class="k">def</span><span class="w"> </span><span class="nf">train_mse_func</span><span class="p">(</span>
 </span><span id="__span-9-36"><a id="__codelineno-9-36" name="__codelineno-9-36"></a>    <span class="n">output_dict</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="s2">"paddle.Tensor"</span><span class="p">],</span>
 </span><span id="__span-9-37"><a id="__codelineno-9-37" name="__codelineno-9-37"></a>    <span class="n">label_dict</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="s2">"pgl.Graph"</span><span class="p">],</span>
 </span><span id="__span-9-38"><a id="__codelineno-9-38" name="__codelineno-9-38"></a>    <span class="o">*</span><span class="n">args</span><span class="p">,</span>
@@ -3996,7 +4158,7 @@
 <span class="normal"><a href="#__codelineno-10-37">37</a></span>
 <span class="normal"><a href="#__codelineno-10-38">38</a></span>
 <span class="normal"><a href="#__codelineno-10-39">39</a></span>
-<span class="normal"><a href="#__codelineno-10-40">40</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-35"><a id="__codelineno-10-35" name="__codelineno-10-35"></a><span class="k">def</span> <span class="nf">train_mse_func</span><span class="p">(</span>
+<span class="normal"><a href="#__codelineno-10-40">40</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-35"><a id="__codelineno-10-35" name="__codelineno-10-35"></a><span class="k">def</span><span class="w"> </span><span class="nf">train_mse_func</span><span class="p">(</span>
 </span><span id="__span-10-36"><a id="__codelineno-10-36" name="__codelineno-10-36"></a>    <span class="n">output_dict</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="s2">"paddle.Tensor"</span><span class="p">],</span>
 </span><span id="__span-10-37"><a id="__codelineno-10-37" name="__codelineno-10-37"></a>    <span class="n">label_dict</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="s2">"pgl.Graph"</span><span class="p">],</span>
 </span><span id="__span-10-38"><a id="__codelineno-10-38" name="__codelineno-10-38"></a>    <span class="o">*</span><span class="n">args</span><span class="p">,</span>
@@ -4210,7 +4372,7 @@
 <span class="normal"><a href="#__codelineno-19-49">49</a></span>
 <span class="normal"><a href="#__codelineno-19-50">50</a></span>
 <span class="normal"><a href="#__codelineno-19-51">51</a></span>
-<span class="normal"><a href="#__codelineno-19-52">52</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-19-43"><a id="__codelineno-19-43" name="__codelineno-19-43"></a><span class="k">def</span> <span class="nf">eval_rmse_func</span><span class="p">(</span>
+<span class="normal"><a href="#__codelineno-19-52">52</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-19-43"><a id="__codelineno-19-43" name="__codelineno-19-43"></a><span class="k">def</span><span class="w"> </span><span class="nf">eval_rmse_func</span><span class="p">(</span>
 </span><span id="__span-19-44"><a id="__codelineno-19-44" name="__codelineno-19-44"></a>    <span class="n">output_dict</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="s2">"paddle.Tensor"</span><span class="p">]],</span>
 </span><span id="__span-19-45"><a id="__codelineno-19-45" name="__codelineno-19-45"></a>    <span class="n">label_dict</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="s2">"pgl.Graph"</span><span class="p">]],</span>
 </span><span id="__span-19-46"><a id="__codelineno-19-46" name="__codelineno-19-46"></a>    <span class="o">*</span><span class="n">args</span><span class="p">,</span>
@@ -4232,7 +4394,7 @@
 <span class="normal"><a href="#__codelineno-20-49">49</a></span>
 <span class="normal"><a href="#__codelineno-20-50">50</a></span>
 <span class="normal"><a href="#__codelineno-20-51">51</a></span>
-<span class="normal"><a href="#__codelineno-20-52">52</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-20-43"><a id="__codelineno-20-43" name="__codelineno-20-43"></a><span class="k">def</span> <span class="nf">eval_rmse_func</span><span class="p">(</span>
+<span class="normal"><a href="#__codelineno-20-52">52</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-20-43"><a id="__codelineno-20-43" name="__codelineno-20-43"></a><span class="k">def</span><span class="w"> </span><span class="nf">eval_rmse_func</span><span class="p">(</span>
 </span><span id="__span-20-44"><a id="__codelineno-20-44" name="__codelineno-20-44"></a>    <span class="n">output_dict</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="s2">"paddle.Tensor"</span><span class="p">]],</span>
 </span><span id="__span-20-45"><a id="__codelineno-20-45" name="__codelineno-20-45"></a>    <span class="n">label_dict</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="s2">"pgl.Graph"</span><span class="p">]],</span>
 </span><span id="__span-20-46"><a id="__codelineno-20-46" name="__codelineno-20-46"></a>    <span class="o">*</span><span class="n">args</span><span class="p">,</span>
@@ -4633,27 +4795,27 @@
 </span><span id="__span-25-12"><a id="__codelineno-25-12" name="__codelineno-25-12"></a><span class="c1"># See the License for the specific language governing permissions and</span>
 </span><span id="__span-25-13"><a id="__codelineno-25-13" name="__codelineno-25-13"></a><span class="c1"># limitations under the License.</span>
 </span><span id="__span-25-14"><a id="__codelineno-25-14" name="__codelineno-25-14"></a>
-</span><span id="__span-25-15"><a id="__codelineno-25-15" name="__codelineno-25-15"></a><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+</span><span id="__span-25-15"><a id="__codelineno-25-15" name="__codelineno-25-15"></a><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
 </span><span id="__span-25-16"><a id="__codelineno-25-16" name="__codelineno-25-16"></a>
-</span><span id="__span-25-17"><a id="__codelineno-25-17" name="__codelineno-25-17"></a><span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">path</span> <span class="k">as</span> <span class="n">osp</span>
-</span><span id="__span-25-18"><a id="__codelineno-25-18" name="__codelineno-25-18"></a><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span>
-</span><span id="__span-25-19"><a id="__codelineno-25-19" name="__codelineno-25-19"></a><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span>
-</span><span id="__span-25-20"><a id="__codelineno-25-20" name="__codelineno-25-20"></a><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+</span><span id="__span-25-17"><a id="__codelineno-25-17" name="__codelineno-25-17"></a><span class="kn">from</span><span class="w"> </span><span class="nn">os</span><span class="w"> </span><span class="kn">import</span> <span class="n">path</span> <span class="k">as</span> <span class="n">osp</span>
+</span><span id="__span-25-18"><a id="__codelineno-25-18" name="__codelineno-25-18"></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span>
+</span><span id="__span-25-19"><a id="__codelineno-25-19" name="__codelineno-25-19"></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dict</span>
+</span><span id="__span-25-20"><a id="__codelineno-25-20" name="__codelineno-25-20"></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span>
 </span><span id="__span-25-21"><a id="__codelineno-25-21" name="__codelineno-25-21"></a>
-</span><span id="__span-25-22"><a id="__codelineno-25-22" name="__codelineno-25-22"></a><span class="kn">import</span> <span class="nn">hydra</span>
-</span><span id="__span-25-23"><a id="__codelineno-25-23" name="__codelineno-25-23"></a><span class="kn">import</span> <span class="nn">utils</span>
-</span><span id="__span-25-24"><a id="__codelineno-25-24" name="__codelineno-25-24"></a><span class="kn">from</span> <span class="nn">omegaconf</span> <span class="kn">import</span> <span class="n">DictConfig</span>
-</span><span id="__span-25-25"><a id="__codelineno-25-25" name="__codelineno-25-25"></a><span class="kn">from</span> <span class="nn">paddle.nn</span> <span class="kn">import</span> <span class="n">functional</span> <span class="k">as</span> <span class="n">F</span>
+</span><span id="__span-25-22"><a id="__codelineno-25-22" name="__codelineno-25-22"></a><span class="kn">import</span><span class="w"> </span><span class="nn">hydra</span>
+</span><span id="__span-25-23"><a id="__codelineno-25-23" name="__codelineno-25-23"></a><span class="kn">import</span><span class="w"> </span><span class="nn">utils</span>
+</span><span id="__span-25-24"><a id="__codelineno-25-24" name="__codelineno-25-24"></a><span class="kn">from</span><span class="w"> </span><span class="nn">omegaconf</span><span class="w"> </span><span class="kn">import</span> <span class="n">DictConfig</span>
+</span><span id="__span-25-25"><a id="__codelineno-25-25" name="__codelineno-25-25"></a><span class="kn">from</span><span class="w"> </span><span class="nn">paddle.nn</span><span class="w"> </span><span class="kn">import</span> <span class="n">functional</span> <span class="k">as</span> <span class="n">F</span>
 </span><span id="__span-25-26"><a id="__codelineno-25-26" name="__codelineno-25-26"></a>
-</span><span id="__span-25-27"><a id="__codelineno-25-27" name="__codelineno-25-27"></a><span class="kn">import</span> <span class="nn">ppsci</span>
-</span><span id="__span-25-28"><a id="__codelineno-25-28" name="__codelineno-25-28"></a><span class="kn">from</span> <span class="nn">ppsci.utils</span> <span class="kn">import</span> <span class="n">logger</span>
+</span><span id="__span-25-27"><a id="__codelineno-25-27" name="__codelineno-25-27"></a><span class="kn">import</span><span class="w"> </span><span class="nn">ppsci</span>
+</span><span id="__span-25-28"><a id="__codelineno-25-28" name="__codelineno-25-28"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ppsci.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">logger</span>
 </span><span id="__span-25-29"><a id="__codelineno-25-29" name="__codelineno-25-29"></a>
 </span><span id="__span-25-30"><a id="__codelineno-25-30" name="__codelineno-25-30"></a><span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
-</span><span id="__span-25-31"><a id="__codelineno-25-31" name="__codelineno-25-31"></a>    <span class="kn">import</span> <span class="nn">paddle</span>
-</span><span id="__span-25-32"><a id="__codelineno-25-32" name="__codelineno-25-32"></a>    <span class="kn">import</span> <span class="nn">pgl</span>
+</span><span id="__span-25-31"><a id="__codelineno-25-31" name="__codelineno-25-31"></a>    <span class="kn">import</span><span class="w"> </span><span class="nn">paddle</span>
+</span><span id="__span-25-32"><a id="__codelineno-25-32" name="__codelineno-25-32"></a>    <span class="kn">import</span><span class="w"> </span><span class="nn">pgl</span>
 </span><span id="__span-25-33"><a id="__codelineno-25-33" name="__codelineno-25-33"></a>
 </span><span id="__span-25-34"><a id="__codelineno-25-34" name="__codelineno-25-34"></a>
-</span><span id="__span-25-35"><a id="__codelineno-25-35" name="__codelineno-25-35"></a><span class="k">def</span> <span class="nf">train_mse_func</span><span class="p">(</span>
+</span><span id="__span-25-35"><a id="__codelineno-25-35" name="__codelineno-25-35"></a><span class="k">def</span><span class="w"> </span><span class="nf">train_mse_func</span><span class="p">(</span>
 </span><span id="__span-25-36"><a id="__codelineno-25-36" name="__codelineno-25-36"></a>    <span class="n">output_dict</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="s2">"paddle.Tensor"</span><span class="p">],</span>
 </span><span id="__span-25-37"><a id="__codelineno-25-37" name="__codelineno-25-37"></a>    <span class="n">label_dict</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="s2">"pgl.Graph"</span><span class="p">],</span>
 </span><span id="__span-25-38"><a id="__codelineno-25-38" name="__codelineno-25-38"></a>    <span class="o">*</span><span class="n">args</span><span class="p">,</span>
@@ -4661,7 +4823,7 @@
 </span><span id="__span-25-40"><a id="__codelineno-25-40" name="__codelineno-25-40"></a>    <span class="k">return</span> <span class="p">{</span><span class="s2">"pred"</span><span class="p">:</span> <span class="n">F</span><span class="o">.</span><span class="n">mse_loss</span><span class="p">(</span><span class="n">output_dict</span><span class="p">[</span><span class="s2">"pred"</span><span class="p">],</span> <span class="n">label_dict</span><span class="p">[</span><span class="s2">"label"</span><span class="p">]</span><span class="o">.</span><span class="n">y</span><span class="p">)}</span>
 </span><span id="__span-25-41"><a id="__codelineno-25-41" name="__codelineno-25-41"></a>
 </span><span id="__span-25-42"><a id="__codelineno-25-42" name="__codelineno-25-42"></a>
-</span><span id="__span-25-43"><a id="__codelineno-25-43" name="__codelineno-25-43"></a><span class="k">def</span> <span class="nf">eval_rmse_func</span><span class="p">(</span>
+</span><span id="__span-25-43"><a id="__codelineno-25-43" name="__codelineno-25-43"></a><span class="k">def</span><span class="w"> </span><span class="nf">eval_rmse_func</span><span class="p">(</span>
 </span><span id="__span-25-44"><a id="__codelineno-25-44" name="__codelineno-25-44"></a>    <span class="n">output_dict</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="s2">"paddle.Tensor"</span><span class="p">]],</span>
 </span><span id="__span-25-45"><a id="__codelineno-25-45" name="__codelineno-25-45"></a>    <span class="n">label_dict</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="s2">"pgl.Graph"</span><span class="p">]],</span>
 </span><span id="__span-25-46"><a id="__codelineno-25-46" name="__codelineno-25-46"></a>    <span class="o">*</span><span class="n">args</span><span class="p">,</span>
@@ -4673,7 +4835,7 @@
 </span><span id="__span-25-52"><a id="__codelineno-25-52" name="__codelineno-25-52"></a>    <span class="k">return</span> <span class="p">{</span><span class="s2">"RMSE"</span><span class="p">:</span> <span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">mse_losses</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">mse_losses</span><span class="p">))</span> <span class="o">**</span> <span class="mf">0.5</span><span class="p">}</span>
 </span><span id="__span-25-53"><a id="__codelineno-25-53" name="__codelineno-25-53"></a>
 </span><span id="__span-25-54"><a id="__codelineno-25-54" name="__codelineno-25-54"></a>
-</span><span id="__span-25-55"><a id="__codelineno-25-55" name="__codelineno-25-55"></a><span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="n">cfg</span><span class="p">:</span> <span class="n">DictConfig</span><span class="p">):</span>
+</span><span id="__span-25-55"><a id="__codelineno-25-55" name="__codelineno-25-55"></a><span class="k">def</span><span class="w"> </span><span class="nf">train</span><span class="p">(</span><span class="n">cfg</span><span class="p">:</span> <span class="n">DictConfig</span><span class="p">):</span>
 </span><span id="__span-25-56"><a id="__codelineno-25-56" name="__codelineno-25-56"></a>    <span class="c1"># set random seed for reproducibility</span>
 </span><span id="__span-25-57"><a id="__codelineno-25-57" name="__codelineno-25-57"></a>    <span class="n">ppsci</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">misc</span><span class="o">.</span><span class="n">set_random_seed</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">seed</span><span class="p">)</span>
 </span><span id="__span-25-58"><a id="__codelineno-25-58" name="__codelineno-25-58"></a>    <span class="c1"># initialize logger</span>
@@ -4772,7 +4934,7 @@
 </span><span id="__span-25-151"><a id="__codelineno-25-151" name="__codelineno-25-151"></a>            <span class="p">)</span>
 </span><span id="__span-25-152"><a id="__codelineno-25-152" name="__codelineno-25-152"></a>
 </span><span id="__span-25-153"><a id="__codelineno-25-153" name="__codelineno-25-153"></a>
-</span><span id="__span-25-154"><a id="__codelineno-25-154" name="__codelineno-25-154"></a><span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="n">cfg</span><span class="p">:</span> <span class="n">DictConfig</span><span class="p">):</span>
+</span><span id="__span-25-154"><a id="__codelineno-25-154" name="__codelineno-25-154"></a><span class="k">def</span><span class="w"> </span><span class="nf">evaluate</span><span class="p">(</span><span class="n">cfg</span><span class="p">:</span> <span class="n">DictConfig</span><span class="p">):</span>
 </span><span id="__span-25-155"><a id="__codelineno-25-155" name="__codelineno-25-155"></a>    <span class="c1"># set random seed for reproducibility</span>
 </span><span id="__span-25-156"><a id="__codelineno-25-156" name="__codelineno-25-156"></a>    <span class="n">ppsci</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">misc</span><span class="o">.</span><span class="n">set_random_seed</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">seed</span><span class="p">)</span>
 </span><span id="__span-25-157"><a id="__codelineno-25-157" name="__codelineno-25-157"></a>    <span class="c1"># initialize logger</span>
@@ -4834,7 +4996,7 @@
 </span><span id="__span-25-213"><a id="__codelineno-25-213" name="__codelineno-25-213"></a>
 </span><span id="__span-25-214"><a id="__codelineno-25-214" name="__codelineno-25-214"></a>
 </span><span id="__span-25-215"><a id="__codelineno-25-215" name="__codelineno-25-215"></a><span class="nd">@hydra</span><span class="o">.</span><span class="n">main</span><span class="p">(</span><span class="n">version_base</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">config_path</span><span class="o">=</span><span class="s2">"./conf"</span><span class="p">,</span> <span class="n">config_name</span><span class="o">=</span><span class="s2">"amgnet_airfoil.yaml"</span><span class="p">)</span>
-</span><span id="__span-25-216"><a id="__codelineno-25-216" name="__codelineno-25-216"></a><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">cfg</span><span class="p">:</span> <span class="n">DictConfig</span><span class="p">):</span>
+</span><span id="__span-25-216"><a id="__codelineno-25-216" name="__codelineno-25-216"></a><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">cfg</span><span class="p">:</span> <span class="n">DictConfig</span><span class="p">):</span>
 </span><span id="__span-25-217"><a id="__codelineno-25-217" name="__codelineno-25-217"></a>    <span class="k">if</span> <span class="n">cfg</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s2">"train"</span><span class="p">:</span>
 </span><span id="__span-25-218"><a id="__codelineno-25-218" name="__codelineno-25-218"></a>        <span class="n">train</span><span class="p">(</span><span class="n">cfg</span><span class="p">)</span>
 </span><span id="__span-25-219"><a id="__codelineno-25-219" name="__codelineno-25-219"></a>    <span class="k">elif</span> <span class="n">cfg</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s2">"eval"</span><span class="p">:</span>
@@ -5087,27 +5249,27 @@
 </span><span id="__span-26-12"><a id="__codelineno-26-12" name="__codelineno-26-12"></a><span class="c1"># See the License for the specific language governing permissions and</span>
 </span><span id="__span-26-13"><a id="__codelineno-26-13" name="__codelineno-26-13"></a><span class="c1"># limitations under the License.</span>
 </span><span id="__span-26-14"><a id="__codelineno-26-14" name="__codelineno-26-14"></a>
-</span><span id="__span-26-15"><a id="__codelineno-26-15" name="__codelineno-26-15"></a><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+</span><span id="__span-26-15"><a id="__codelineno-26-15" name="__codelineno-26-15"></a><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
 </span><span id="__span-26-16"><a id="__codelineno-26-16" name="__codelineno-26-16"></a>
-</span><span id="__span-26-17"><a id="__codelineno-26-17" name="__codelineno-26-17"></a><span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">path</span> <span class="k">as</span> <span class="n">osp</span>
-</span><span id="__span-26-18"><a id="__codelineno-26-18" name="__codelineno-26-18"></a><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span>
-</span><span id="__span-26-19"><a id="__codelineno-26-19" name="__codelineno-26-19"></a><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span>
-</span><span id="__span-26-20"><a id="__codelineno-26-20" name="__codelineno-26-20"></a><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+</span><span id="__span-26-17"><a id="__codelineno-26-17" name="__codelineno-26-17"></a><span class="kn">from</span><span class="w"> </span><span class="nn">os</span><span class="w"> </span><span class="kn">import</span> <span class="n">path</span> <span class="k">as</span> <span class="n">osp</span>
+</span><span id="__span-26-18"><a id="__codelineno-26-18" name="__codelineno-26-18"></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span>
+</span><span id="__span-26-19"><a id="__codelineno-26-19" name="__codelineno-26-19"></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dict</span>
+</span><span id="__span-26-20"><a id="__codelineno-26-20" name="__codelineno-26-20"></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span>
 </span><span id="__span-26-21"><a id="__codelineno-26-21" name="__codelineno-26-21"></a>
-</span><span id="__span-26-22"><a id="__codelineno-26-22" name="__codelineno-26-22"></a><span class="kn">import</span> <span class="nn">hydra</span>
-</span><span id="__span-26-23"><a id="__codelineno-26-23" name="__codelineno-26-23"></a><span class="kn">import</span> <span class="nn">utils</span>
-</span><span id="__span-26-24"><a id="__codelineno-26-24" name="__codelineno-26-24"></a><span class="kn">from</span> <span class="nn">omegaconf</span> <span class="kn">import</span> <span class="n">DictConfig</span>
-</span><span id="__span-26-25"><a id="__codelineno-26-25" name="__codelineno-26-25"></a><span class="kn">from</span> <span class="nn">paddle.nn</span> <span class="kn">import</span> <span class="n">functional</span> <span class="k">as</span> <span class="n">F</span>
+</span><span id="__span-26-22"><a id="__codelineno-26-22" name="__codelineno-26-22"></a><span class="kn">import</span><span class="w"> </span><span class="nn">hydra</span>
+</span><span id="__span-26-23"><a id="__codelineno-26-23" name="__codelineno-26-23"></a><span class="kn">import</span><span class="w"> </span><span class="nn">utils</span>
+</span><span id="__span-26-24"><a id="__codelineno-26-24" name="__codelineno-26-24"></a><span class="kn">from</span><span class="w"> </span><span class="nn">omegaconf</span><span class="w"> </span><span class="kn">import</span> <span class="n">DictConfig</span>
+</span><span id="__span-26-25"><a id="__codelineno-26-25" name="__codelineno-26-25"></a><span class="kn">from</span><span class="w"> </span><span class="nn">paddle.nn</span><span class="w"> </span><span class="kn">import</span> <span class="n">functional</span> <span class="k">as</span> <span class="n">F</span>
 </span><span id="__span-26-26"><a id="__codelineno-26-26" name="__codelineno-26-26"></a>
-</span><span id="__span-26-27"><a id="__codelineno-26-27" name="__codelineno-26-27"></a><span class="kn">import</span> <span class="nn">ppsci</span>
-</span><span id="__span-26-28"><a id="__codelineno-26-28" name="__codelineno-26-28"></a><span class="kn">from</span> <span class="nn">ppsci.utils</span> <span class="kn">import</span> <span class="n">logger</span>
+</span><span id="__span-26-27"><a id="__codelineno-26-27" name="__codelineno-26-27"></a><span class="kn">import</span><span class="w"> </span><span class="nn">ppsci</span>
+</span><span id="__span-26-28"><a id="__codelineno-26-28" name="__codelineno-26-28"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ppsci.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">logger</span>
 </span><span id="__span-26-29"><a id="__codelineno-26-29" name="__codelineno-26-29"></a>
 </span><span id="__span-26-30"><a id="__codelineno-26-30" name="__codelineno-26-30"></a><span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
-</span><span id="__span-26-31"><a id="__codelineno-26-31" name="__codelineno-26-31"></a>    <span class="kn">import</span> <span class="nn">paddle</span>
-</span><span id="__span-26-32"><a id="__codelineno-26-32" name="__codelineno-26-32"></a>    <span class="kn">import</span> <span class="nn">pgl</span>
+</span><span id="__span-26-31"><a id="__codelineno-26-31" name="__codelineno-26-31"></a>    <span class="kn">import</span><span class="w"> </span><span class="nn">paddle</span>
+</span><span id="__span-26-32"><a id="__codelineno-26-32" name="__codelineno-26-32"></a>    <span class="kn">import</span><span class="w"> </span><span class="nn">pgl</span>
 </span><span id="__span-26-33"><a id="__codelineno-26-33" name="__codelineno-26-33"></a>
 </span><span id="__span-26-34"><a id="__codelineno-26-34" name="__codelineno-26-34"></a>
-</span><span id="__span-26-35"><a id="__codelineno-26-35" name="__codelineno-26-35"></a><span class="k">def</span> <span class="nf">train_mse_func</span><span class="p">(</span>
+</span><span id="__span-26-35"><a id="__codelineno-26-35" name="__codelineno-26-35"></a><span class="k">def</span><span class="w"> </span><span class="nf">train_mse_func</span><span class="p">(</span>
 </span><span id="__span-26-36"><a id="__codelineno-26-36" name="__codelineno-26-36"></a>    <span class="n">output_dict</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="s2">"paddle.Tensor"</span><span class="p">],</span>
 </span><span id="__span-26-37"><a id="__codelineno-26-37" name="__codelineno-26-37"></a>    <span class="n">label_dict</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="s2">"pgl.Graph"</span><span class="p">],</span>
 </span><span id="__span-26-38"><a id="__codelineno-26-38" name="__codelineno-26-38"></a>    <span class="o">*</span><span class="n">args</span><span class="p">,</span>
@@ -5115,7 +5277,7 @@
 </span><span id="__span-26-40"><a id="__codelineno-26-40" name="__codelineno-26-40"></a>    <span class="k">return</span> <span class="p">{</span><span class="s2">"pred"</span><span class="p">:</span> <span class="n">F</span><span class="o">.</span><span class="n">mse_loss</span><span class="p">(</span><span class="n">output_dict</span><span class="p">[</span><span class="s2">"pred"</span><span class="p">],</span> <span class="n">label_dict</span><span class="p">[</span><span class="s2">"label"</span><span class="p">]</span><span class="o">.</span><span class="n">y</span><span class="p">)}</span>
 </span><span id="__span-26-41"><a id="__codelineno-26-41" name="__codelineno-26-41"></a>
 </span><span id="__span-26-42"><a id="__codelineno-26-42" name="__codelineno-26-42"></a>
-</span><span id="__span-26-43"><a id="__codelineno-26-43" name="__codelineno-26-43"></a><span class="k">def</span> <span class="nf">eval_rmse_func</span><span class="p">(</span>
+</span><span id="__span-26-43"><a id="__codelineno-26-43" name="__codelineno-26-43"></a><span class="k">def</span><span class="w"> </span><span class="nf">eval_rmse_func</span><span class="p">(</span>
 </span><span id="__span-26-44"><a id="__codelineno-26-44" name="__codelineno-26-44"></a>    <span class="n">output_dict</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="s2">"paddle.Tensor"</span><span class="p">]],</span>
 </span><span id="__span-26-45"><a id="__codelineno-26-45" name="__codelineno-26-45"></a>    <span class="n">label_dict</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="s2">"pgl.Graph"</span><span class="p">]],</span>
 </span><span id="__span-26-46"><a id="__codelineno-26-46" name="__codelineno-26-46"></a>    <span class="o">*</span><span class="n">args</span><span class="p">,</span>
@@ -5127,7 +5289,7 @@
 </span><span id="__span-26-52"><a id="__codelineno-26-52" name="__codelineno-26-52"></a>    <span class="k">return</span> <span class="p">{</span><span class="s2">"RMSE"</span><span class="p">:</span> <span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">mse_losses</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">mse_losses</span><span class="p">))</span> <span class="o">**</span> <span class="mf">0.5</span><span class="p">}</span>
 </span><span id="__span-26-53"><a id="__codelineno-26-53" name="__codelineno-26-53"></a>
 </span><span id="__span-26-54"><a id="__codelineno-26-54" name="__codelineno-26-54"></a>
-</span><span id="__span-26-55"><a id="__codelineno-26-55" name="__codelineno-26-55"></a><span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="n">cfg</span><span class="p">:</span> <span class="n">DictConfig</span><span class="p">):</span>
+</span><span id="__span-26-55"><a id="__codelineno-26-55" name="__codelineno-26-55"></a><span class="k">def</span><span class="w"> </span><span class="nf">train</span><span class="p">(</span><span class="n">cfg</span><span class="p">:</span> <span class="n">DictConfig</span><span class="p">):</span>
 </span><span id="__span-26-56"><a id="__codelineno-26-56" name="__codelineno-26-56"></a>    <span class="c1"># set random seed for reproducibility</span>
 </span><span id="__span-26-57"><a id="__codelineno-26-57" name="__codelineno-26-57"></a>    <span class="n">ppsci</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">misc</span><span class="o">.</span><span class="n">set_random_seed</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">seed</span><span class="p">)</span>
 </span><span id="__span-26-58"><a id="__codelineno-26-58" name="__codelineno-26-58"></a>    <span class="c1"># initialize logger</span>
@@ -5226,7 +5388,7 @@
 </span><span id="__span-26-151"><a id="__codelineno-26-151" name="__codelineno-26-151"></a>            <span class="p">)</span>
 </span><span id="__span-26-152"><a id="__codelineno-26-152" name="__codelineno-26-152"></a>
 </span><span id="__span-26-153"><a id="__codelineno-26-153" name="__codelineno-26-153"></a>
-</span><span id="__span-26-154"><a id="__codelineno-26-154" name="__codelineno-26-154"></a><span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="n">cfg</span><span class="p">:</span> <span class="n">DictConfig</span><span class="p">):</span>
+</span><span id="__span-26-154"><a id="__codelineno-26-154" name="__codelineno-26-154"></a><span class="k">def</span><span class="w"> </span><span class="nf">evaluate</span><span class="p">(</span><span class="n">cfg</span><span class="p">:</span> <span class="n">DictConfig</span><span class="p">):</span>
 </span><span id="__span-26-155"><a id="__codelineno-26-155" name="__codelineno-26-155"></a>    <span class="c1"># set random seed for reproducibility</span>
 </span><span id="__span-26-156"><a id="__codelineno-26-156" name="__codelineno-26-156"></a>    <span class="n">ppsci</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">misc</span><span class="o">.</span><span class="n">set_random_seed</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">seed</span><span class="p">)</span>
 </span><span id="__span-26-157"><a id="__codelineno-26-157" name="__codelineno-26-157"></a>    <span class="c1"># initialize logger</span>
@@ -5288,7 +5450,7 @@
 </span><span id="__span-26-213"><a id="__codelineno-26-213" name="__codelineno-26-213"></a>
 </span><span id="__span-26-214"><a id="__codelineno-26-214" name="__codelineno-26-214"></a>
 </span><span id="__span-26-215"><a id="__codelineno-26-215" name="__codelineno-26-215"></a><span class="nd">@hydra</span><span class="o">.</span><span class="n">main</span><span class="p">(</span><span class="n">version_base</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">config_path</span><span class="o">=</span><span class="s2">"./conf"</span><span class="p">,</span> <span class="n">config_name</span><span class="o">=</span><span class="s2">"amgnet_cylinder.yaml"</span><span class="p">)</span>
-</span><span id="__span-26-216"><a id="__codelineno-26-216" name="__codelineno-26-216"></a><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">cfg</span><span class="p">:</span> <span class="n">DictConfig</span><span class="p">):</span>
+</span><span id="__span-26-216"><a id="__codelineno-26-216" name="__codelineno-26-216"></a><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">cfg</span><span class="p">:</span> <span class="n">DictConfig</span><span class="p">):</span>
 </span><span id="__span-26-217"><a id="__codelineno-26-217" name="__codelineno-26-217"></a>    <span class="k">if</span> <span class="n">cfg</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s2">"train"</span><span class="p">:</span>
 </span><span id="__span-26-218"><a id="__codelineno-26-218" name="__codelineno-26-218"></a>        <span class="n">train</span><span class="p">(</span><span class="n">cfg</span><span class="p">)</span>
 </span><span id="__span-26-219"><a id="__codelineno-26-219" name="__codelineno-26-219"></a>    <span class="k">elif</span> <span class="n">cfg</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s2">"eval"</span><span class="p">:</span>
@@ -5358,7 +5520,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年7月11日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2024年7月11日 11:52:15">2024年7月11日</span>
   </span>
 
     
@@ -5368,7 +5530,7 @@
     <span class="md-icon" title="创建日期">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2023年10月23日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2023年10月23日 03:04:52">2023年10月23日</span>
   </span>
 
     
@@ -5426,10 +5588,10 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.tracking", "navigation.sections", "navigation.top", "search.suggest", "navigation.instant", "content.code.copy", "content.code.select", "content.code.annotate", "search.highlight", "content.tabs.link", "content.action.edit", "content.action.view", "content.tooltips"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": {"alias": true, "provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.tracking", "navigation.sections", "navigation.top", "search.suggest", "navigation.instant", "content.code.copy", "content.code.select", "content.code.annotate", "search.highlight", "content.tabs.link", "content.action.edit", "content.action.view", "content.tooltips"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": {"alias": true, "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.88dd0f4e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
       
         <script src="../../../javascripts/bd_statistics.js"></script>
       
